@@ -21,7 +21,6 @@ import android.os.BatteryManager
 import android.provider.Settings
 import com.flxholle.quicktiles.R
 import com.flxholle.quicktiles.abstract_tiles.WriteSecureSettingsTileService
-import com.flxholle.quicktiles.utils.GrantPermissionDialogs
 import com.flxholle.quicktiles.utils.SharedPreferencesUtil
 import com.flxholle.quicktiles.utils.WriteSystemSettingsUtils
 
@@ -57,17 +56,6 @@ class KeepScreenOnTileService : WriteSecureSettingsTileService<Int>() {
 
     override fun reset() {
         saveValue(OFF)
-    }
-
-    override fun checkPermission(): Boolean {
-        if (GrantPermissionDialogs.hasModifySystemSettingsPermission(this)
-                && GrantPermissionDialogs.hasWriteSecureSettingsPermission(this))
-            return true
-        else if (!GrantPermissionDialogs.hasModifySystemSettingsPermission(this))
-            showDialog(GrantPermissionDialogs.getModifySystemSettingsDialog(this))
-        else
-            showDialog(GrantPermissionDialogs.getWriteSecureSettingsDialog(this))
-        return false
     }
 
     override fun saveValue(value: Int): Boolean {

@@ -31,7 +31,6 @@
     <string name="development">開發</string>
     <string name="finish_activities">一律刪除活動</string>
     <string name="usb_debugging">USB 偵錯</string>
-    <string name="wireless_usb_debugging">無線網路偵錯</string>
     <string name="keep_screen_on">保持螢幕開啟</string>
     <string name="demo_mode">示範模式</string>
     <string name="heads_up">看路提醒</string>

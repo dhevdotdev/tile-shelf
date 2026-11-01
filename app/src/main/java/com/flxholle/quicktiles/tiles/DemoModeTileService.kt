@@ -21,7 +21,6 @@ import android.os.Build
 import com.flxholle.quicktiles.R
 import com.flxholle.quicktiles.abstract_tiles.WriteSecureSettingsTileService
 import com.flxholle.quicktiles.utils.DemoMode
-import com.flxholle.quicktiles.utils.GrantPermissionDialogs
 import com.flxholle.quicktiles.utils.WriteSystemSettingsUtils
 
 /**
@@ -47,19 +46,6 @@ class DemoModeTileService : WriteSecureSettingsTileService<Int>() {
 
     override fun reset() {
         stopDemoMode()
-    }
-
-    override fun checkPermission(): Boolean {
-        if (GrantPermissionDialogs.hasDumpPermission(this)
-                && GrantPermissionDialogs.hasWriteSecureSettingsPermission(this))
-            return true
-        else if (!GrantPermissionDialogs.hasDumpPermission(this))
-            showDialog(GrantPermissionDialogs.getDumpDialog(this))
-        else if (!GrantPermissionDialogs.hasWriteSecureSettingsPermission(this))
-            showDialog(GrantPermissionDialogs.getWriteSecureSettingsDialog(this))
-        else
-            showDialog(GrantPermissionDialogs.getWriteSecureSettingsAndDumpDialog(this))
-        return false
     }
 
     override fun saveValue(value: Int): Boolean {

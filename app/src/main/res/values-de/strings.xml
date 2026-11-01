@@ -107,7 +107,6 @@
     <string name="fix_rotation">Fixiere Displayrotation</string>
     <string name="portrait">Porträt</string>
     <string name="landscape">Querformat</string>
-    <string name="wireless_usb_debugging">Drahtloses USB-Debugging</string>
     <string name="unable_to_get_ip_address">Lokale IP-Adresse kann nicht ermittelt werden</string>
     <string name="permission_root_description">Um diese Funktion zu nutzen, muss das Smartphone gerooted sein und dieser App Root-Zugriff gewährt werden.</string>
     <string name="set_custom_app_name">Anderer App Name</string>

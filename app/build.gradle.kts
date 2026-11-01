@@ -1,17 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.mikepenz.aboutlibraries.plugin")
 }
 
 android {
     namespace = "com.flxholle.quicktiles"
-    compileSdk = 35
+    compileSdk = 37
+    buildToolsVersion = "37.0.0"
 
     defaultConfig {
-        applicationId = "com.asdoi.quicktiles"
+        applicationId = "com.dhev.quicktiles"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 18
         versionName = "1.8"
 
@@ -28,21 +28,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
-    implementation(libs.aboutlibraries.core)
-    implementation(libs.aboutlibraries.view)
-    implementation(libs.searchpreference)
-
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.preference.ktx)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

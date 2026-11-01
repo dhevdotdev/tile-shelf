@@ -19,6 +19,7 @@ package com.flxholle.quicktiles.abstract_tiles
 import android.graphics.drawable.Icon
 import android.service.quicksettings.Tile
 import androidx.annotation.CallSuper
+import com.flxholle.quicktiles.catalog.GateCheck
 
 abstract class SelectionTileService<T : Any> : BaseTileService() {
 
@@ -48,9 +49,7 @@ abstract class SelectionTileService<T : Any> : BaseTileService() {
         updateState()
     }
 
-    open fun checkPermission(): Boolean {
-        return true
-    }
+    fun checkPermission(): Boolean = GateCheck.proceed(this)
 
     private fun updateState() {
         qsTile.state = if (isActive(value)) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE

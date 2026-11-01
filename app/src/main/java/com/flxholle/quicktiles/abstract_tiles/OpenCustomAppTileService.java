@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.service.quicksettings.Tile;
 
 import com.flxholle.quicktiles.R;
-import com.flxholle.quicktiles.utils.SelectApp;
 import com.flxholle.quicktiles.utils.SharedPreferencesUtil;
 
 public abstract class OpenCustomAppTileService extends IntentTileService {
@@ -23,12 +22,10 @@ public abstract class OpenCustomAppTileService extends IntentTileService {
     @Override
     public Intent createIntent() {
         String packageName = SharedPreferencesUtil.getCustomPackage(this, getPreferencesKey());
-        if (packageName != null)
-            return getPackageManager().getLaunchIntentForPackage(packageName);
-        else {
-            showDialog(SelectApp.selectApps(this, getPreferencesKey()));
-            return getPackageManager().getLaunchIntentForPackage(getApplicationInfo().packageName);
+        if (packageName == null || packageName.trim().isEmpty()) {
+            return null;
         }
+        return getPackageManager().getLaunchIntentForPackage(packageName);
     }
 
     private void updateState() {

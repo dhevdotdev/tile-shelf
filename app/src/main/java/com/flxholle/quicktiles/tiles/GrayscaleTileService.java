@@ -6,7 +6,7 @@ import android.provider.Settings;
 import android.service.quicksettings.Tile;
 
 import com.flxholle.quicktiles.abstract_tiles.BaseTileService;
-import com.flxholle.quicktiles.utils.GrantPermissionDialogs;
+import com.flxholle.quicktiles.catalog.GateCheck;
 
 public class GrayscaleTileService extends BaseTileService {
     private static final String DISPLAY_DALTONIZER_ENABLED = "accessibility_display_daltonizer_enabled";
@@ -26,10 +26,7 @@ public class GrayscaleTileService extends BaseTileService {
 
     @Override
     public void onClick() {
-        super.onClick();
-
-        if (!GrantPermissionDialogs.hasWriteSecureSettingsPermission(this)) {
-            showDialog(GrantPermissionDialogs.getWriteSecureSettingsDialog(this));
+        if (!GateCheck.proceed(this)) {
             return;
         }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">QuickTiles</string>
+    <string name="app_name" translatable="false">Dhev Tiles</string>
     <string name="app_icon_credit_link" translatable="false">https://www.flaticon.com/authors/nikita-golubev</string>
     <string name="open_source_libraries">Açık kaynak kütüphaneler</string>
     <string name="credits">Katkıda Bulunanlar</string>
@@ -43,7 +43,6 @@
     <string name="development">Geliştirme</string>
     <string name="finish_activities">Etkinlikleri Her Zaman Bitir</string>
     <string name="usb_debugging">USB Hata Ayıklama</string>
-    <string name="wireless_usb_debugging">Kablosuz Hata Ayıklama</string>
     <string name="keep_screen_on">Ekranı Açık Tut</string>
     <string name="demo_mode">Demo Modu</string>
     <string name="heads_up">Bildirim Pencereleri</string>
