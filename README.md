@@ -1,239 +1,79 @@
-<div style="text-align: center;">
+# Dhev Tiles
 
-[![Latest Release](https://img.shields.io/gitlab/v/release/flxholle/quick-tiles?style=for-the-badge)](https://gitlab.com/flxholle/quick-tiles/-/releases)
-[![Contributors](https://img.shields.io/gitlab/contributors/flxholle/quick-tiles?style=for-the-badge)](https://gitlab.com/flxholle/quick-tiles/-/graphs/master)
-[![Forks](https://img.shields.io/gitlab/forks/flxholle/quick-tiles?style=for-the-badge)](https://gitlab.com/flxholle/quick-tiles/-/forks)
-[![Stargazers](https://img.shields.io/gitlab/stars/flxholle/quick-tiles?style=for-the-badge)](https://gitlab.com/flxholle/quick-tiles/-/starrers)
-[![Issues](https://img.shields.io/gitlab/issues/open/flxholle/quick-tiles?style=for-the-badge)](https://gitlab.com/flxholle/quick-tiles/-/issues)
-[![License](https://img.shields.io/badge/license-GPLv3-lightgray.svg?style=for-the-badge)](https://gitlab.com/flxholle/quick-tiles/-/blob/master/LICENSE.txt)
+Dhev Tiles is a local fork of QuickTiles 1.8. It adds quick settings tiles on Android and installs beside the original app. The launcher name is Dhev Tiles. The application id is `com.dhev.quicktiles`. There are no ads, no analytics, and no advertising id.
 
-[#top]
+The fork starts from the F-Droid source tarball for QuickTiles 1.8, versionCode 18 (`com.asdoi.quicktiles`). The original author is flxholle. This program is free software under GPL-3.0-or-later. See `LICENSE`.
 
-</div>
+The screens use Material 3 Expressive (`androidx.compose.material3:material3:1.5.0-beta02`). The new tile in this version is Clear clipboard. A caffeine tile, a sync tile, and home-screen widgets are not in this version.
 
+## Build
 
-<br />
-<div align="center">
-<img src="./appicon.png" alt="Logo" width="80" height="80">
+You need JDK 21 and Android SDK platform 37.
 
-<h3 align="center">QuickTiles</h3>
-
-<p align="center">
-    Add custom quick settings tiles to your Android device.
-    <br />
-    <a href="#about-the-project">View Project</a>
-    &middot;
-    <a href="https://gitlab.com/flxholle/quick-tiles/-/issues/new?issue%5Bissue_type%5D=issue">Report Bug</a>
-    &middot;
-    <a href="https://gitlab.com/flxholle/quick-tiles/-/issues/new?issue%5Bissue_type%5D=enhancement">Request Feature</a>
-  </p>
-
-</div>
-
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#google-play-protect-warning">Google Play Protect Warning</a></li>
-    <li><a href="#contributing">Contributing</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#how-to-contribute">How to Contribute</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-## About The Project
-QuickTiles lets you add custom quick settings tiles to your Android device, enabling fast access to
-your favorite actions and shortcuts. The app is open source and privacy-friendly.
-
-
-<img src="./fastlane/metadata/android/en/images/phoneScreenshots/1.png?inline=false" width=200 alt="Screenshot">
-<img src="./fastlane/metadata/android/en/images/phoneScreenshots/2.png?inline=false" width=200 alt="Screenshot">
-
-### Download
-
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-alt="Get it on F-Droid"
-height="80">](https://f-droid.org/packages/com.asdoi.quicktiles/)
-[<img src="https://raw.githubusercontent.com/LibreShift/red-moon/master/art/direct-apk-download.png"
-      alt="Direct apk download"
-      height="80">](https://gitlab.com/flxholle/quick-tiles/-/releases)
-
-
-<div align="right">(<a href="#top">back to top</a>)</div>
-
-### Features ✨
-
-- 🎵 Media control (play/pause, next, previous, media volume)
-- 🔊 Show volume panel
-- 📅 New event/alarm/timer
-- 📞 Make call
-- 📷 Take photo/record video
-- 🧮 Open calculator/file manager
-- 📱 Open custom apps
-- 🔍 Search settings
-- 🌐 Open languages
-- 📖 Open dictionary/privacy
-- 🔗 Open VPN/data usage/screen cast/connected devices/about
-- ⏲️ Set screen timeout
-- 🔔 Switch volume modes (normal, vibrate, priority only, alarms only, total silence)
-- 💡 Adjust brightness
-- 🌙 Adaptive brightness toggle
-- 🌑 Grayscale
-- 📸 Take screenshot
-- 🔄 Force rotation (0°, 90°, 180°, 270°)
-- 🔒 Lock screen
-- 🖥️ Split screen
-- 📳 Set vibration on calls
-- ⚡ Open power menu
-- 🔋 Show battery level
-- 🔢 Counter
-- 🐞 Enable/disable USB debugging
-- 🕹️ Enable/Disable demo mode
-- 🛠️ Open developer options
-- 🌙 Enable/Disable keep screen on
-- 🏃 Set animator duration scale
-- 🚫 Disable all animations
-- 🏁 Always finish activities
-
-<div align="right">(<a href="#top">back to top</a>)</div>
-
-### Built With
-
-* ![Android](https://img.shields.io/badge/Android-Studio-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-* ![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
-* ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-* ![Gradle](https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white)
-
-<div align="right">(<a href="#top">back to top</a>)</div>
-
-## Usage
-
-After installing, open QuickTiles and enable the tiles you want to use. You can then access them
-from the quick settings panel on your Android device.
-
-<div align="right">(<a href="#top">back to top</a>)</div>
-
-## Google Play Protect Warning
-
-**Important:**
-Google Play Protect may warn that QuickTiles is a "harmful app."
-This is a false positive. You can check the full source code in this repository — there is no
-malicious activity.
-
-If you disable Play Protect, Android may still periodically show warnings. This seems to be because
-Android stores previously detected warnings and repeats them, even after Play Protect is turned off.
-
-<div align="right">(<a href="#top">back to top</a>)</div>
-
-## Contributing
-
-Contributions make open source amazing. If you have an idea or fix, please:
-
-### Prerequisites
-
-- Android Studio
-- Android device or emulator
-
-### Installation
-
-1. Clone the repo
+`compileSdk` is 37 because `androidx.compose.material3:material3:1.5.0-beta02` and the Compose 1.12 libraries it pulls require compileSdk 37. `checkDebugAarMetadata` fails on compileSdk 36. `targetSdk` stays 36. `minSdk` stays 24, so the debug APK still installs on Android 15, including a OnePlus 13R.
 
 ```sh
-   git clone https://gitlab.com/flxholle/quick-tiles.git
+./gradlew :app:assembleDebug
+./gradlew :app:testDebugUnitTest
+./gradlew :app:recordRoborazziDebug
 ```
 
-2. Open the project in Android Studio.
-3. Build and run the app on your device.
+The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. Roborazzi writes `app/screenshots/matrix/`.
 
-### How to Contribute
+Turning a tile on in the app publishes it to the quick settings editor. You still add it to the shade yourself. The app does not place tiles in the active row.
 
-1. Fork the Project
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## Tiles
 
-<div align="right">(<a href="#top">back to top</a>)</div>
+Tiles with no extra grant need nothing beyond the app. Clear clipboard is one of those. It calls `ClipboardManager.clearPrimaryClip()` from the tile service on API 28 and above. On older APIs, and if that call throws, it sets an empty clip. The tile shows "Clipboard cleared" on its subtitle, or on its label below API 29. Keyboard clipboard histories, including Gboard and the OnePlus and Samsung keyboards, keep their own copies. An app cannot clear those.
 
-## Roadmap
+| Tile | Grant |
+| --- | --- |
+| Play/Pause, Next, Previous, Media volume, Volume panel | None |
+| New alarm, New timer, New event, Make call, Take photo, Record video, Calculator, File manager | None |
+| Custom app, five slots | None. Pick the app in Dhev Tiles before the tile can open it. |
+| Search settings, Languages, Personal dictionary, Privacy, Display, Home app, Notification history, VPN, Data usage, Screen cast, Connected devices, About phone, Developer options, Battery | None |
+| Clear clipboard | None |
+| Counter | None. Reset the count from the tile's detail screen. |
+| Screen timeout, Adjust brightness, Adaptive brightness, Vibrate on calls | One-time Modify system settings |
+| Keep screen on | Modify system settings and an adb grant of `WRITE_SECURE_SETTINGS`. The detail screen chooses AC, USB, wireless, or any power source. |
+| Switch volume modes, Switch between loud and silence | One-time Do Not Disturb access |
+| USB debugging, Heads-up, Force rotation, Fix rotation, Animator duration, Disable all animations, Always finish activities | adb grant of `android.permission.WRITE_SECURE_SETTINGS` |
+| Demo mode | adb grants of `WRITE_SECURE_SETTINGS` and `DUMP` |
+| Screenshot, Lock screen, Split screen, Power menu | Enable the Dhev Tiles accessibility service. Screenshot and lock screen appear from API 28. |
+| Grayscale | adb `WRITE_SECURE_SETTINGS`. The row is hidden from API 30 up unless it was already on, in which case you can only turn it off. |
+| Show taps | Not offered. A stored on value can only be turned off. Writing `show_touches` throws on this targetSdk. |
 
-- Add customizations to "Demo Mode"
-  from [Dev-QuickSettings (feature/settings)](https://github.com/adriangl/Dev-QuickSettings/tree/feature/settings)
-- Add JobServices to check if the system settings were manually changed by the user
-- Fix the delay after a tile is pressed
+The adb form is:
 
-## License
+```sh
+adb shell pm grant com.dhev.quicktiles android.permission.WRITE_SECURE_SETTINGS
+adb shell pm grant com.dhev.quicktiles android.permission.DUMP
+```
 
-Distributed under the GPLv3 License. See `LICENSE` for details.
+The upstream wireless USB debugging tile needs root. This fork does not include it and does not request root.
 
-<div align="right">(<a href="#top">back to top</a>)</div>
+## Limits
 
-## Contact
+Publishing a tile does not add it to the shade. After you turn it on, add it from the quick settings editor.
 
-Felix Hollederer - [@flxholle](https://gitlab.com/flxholle) - flxholle@posteo.com
+Clear clipboard does not clear keyboard clipboard history.
 
-Project
-Link: [https://gitlab.com/flxholle/quick-tiles](https://gitlab.com/flxholle/quick-tiles)
+Turning a tile off does not undo the system setting that tile last wrote.
 
-<div align="right">(<a href="#top">back to top</a>)</div>
+A failed grant leaves the switch off. Grant the permission, then turn the tile on again.
 
-## Acknowledgments
+## Next step
 
-### Icons
+Add a caffeine keep-screen-awake tile with a foreground service, and note how OnePlus battery optimisation treats that service. That tile is deferred from this version.
 
-- Old App icon by [Freepik](https://www.flaticon.com/authors/freepik)
-  from [Flaticon](https://www.flaticon.com/)
-- New App Icon generated with DALL-E 3
-  ([OpenAI](https://openai.com/dall-e-3/))
-- Toggle-split-screen icon by [Smashicons](https://www.flaticon.com/authors/smashicons)
-  from [Flaticon](https://www.flaticon.com/)
+## Credits
 
-### Open Source Projects
+Icons. The app icon credits include Freepik on Flaticon. The split-screen icon is by Smashicons on Flaticon. The upstream README also credits a later icon to DALL-E 3.
 
-- [Dev-Tiles](https://github.com/mustafa01ali/Dev-Tiles) by Mustafa
-  Ali ([Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt))
-- [Dev-QuickSettings](https://github.com/adriangl/Dev-QuickSettings) by Adrián
-  García ([Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt))
-- [Adaptive Brightness Tile](https://github.com/rascarlo/AdaptiveBrightnessTile) by
-  rascarlo ([GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.txt))
-- [PowerButtonTile](https://github.com/rascarlo/PowerButtonTile) by
-  rascarlo ([GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.txt))
-- [Greyscale](https://github.com/fei-ke/Greyscale) by
-  fei-ke ([Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt))
+Code used by the original project:
 
-<div align="right">(<a href="#top">back to top</a>)</div>
-
-
-[contributors-shield]: https://img.shields.io/gitlab/contributors/flxholle/quick-tiles?style=for-the-badge
-
-[contributors-url]: https://gitlab.com/flxholle/quick-tiles/-/graphs/master
-
-[forks-shield]: https://img.shields.io/gitlab/forks/flxholle/quick-tiles?style=for-the-badge
-
-[forks-url]: https://gitlab.com/flxholle/quick-tiles/-/forks
-
-[stars-shield]: https://img.shields.io/gitlab/stars/flxholle/quick-tiles?style=for-the-badge
-
-[stars-url]: https://gitlab.com/flxholle/quick-tiles/-/starrers
-
-[issues-shield]: https://img.shields.io/gitlab/issues/flxholle/quick-tiles?style=for-the-badge
-
-[issues-url]: https://gitlab.com/flxholle/quick-tiles/-/issues
-
-[license-shield]: https://img.shields.io/badge/license-Unlicense-blue.svg?style=for-the-badge
-
-[license-url]: https://gitlab.com/flxholle/quick-tiles/-/blob/master/LICENSE.txt
+- Dev-Tiles by Mustafa Ali, Apache-2.0
+- Dev-QuickSettings by Adrián García, Apache-2.0
+- Adaptive Brightness Tile by rascarlo, GPL-3.0
+- PowerButtonTile by rascarlo, GPL-3.0
+- Greyscale by fei-ke, Apache-2.0
