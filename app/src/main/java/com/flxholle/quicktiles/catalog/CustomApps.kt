@@ -13,4 +13,11 @@ object CustomApps {
         val label = prefs.getString(slot.labelKey, null)?.trim().orEmpty()
         return StoredApp(packageName, label.ifEmpty { packageName })
     }
+
+    fun write(context: Context, slot: CustomSlot, app: StoredApp) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+            .putString(slot.packageKey, app.packageName)
+            .putString(slot.labelKey, app.label)
+            .apply()
+    }
 }

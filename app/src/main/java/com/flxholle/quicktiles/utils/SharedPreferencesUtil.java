@@ -42,6 +42,12 @@ public class SharedPreferencesUtil {
                 .getString(CUSTOMIZE_KEEP_SCREEN_ON, "3"));
     }
 
+    public static void setCustomizeKeepScreenOn(Context context, String stored) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+                .putString(CUSTOMIZE_KEEP_SCREEN_ON, stored)
+                .apply();
+    }
+
     public static int getScreenTimeout(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getInt(SCREEN_TIMEOUT, 60000);

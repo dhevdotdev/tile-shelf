@@ -3,6 +3,7 @@ package com.flxholle.quicktiles
 import com.flxholle.quicktiles.catalog.ApplyScope
 import com.flxholle.quicktiles.catalog.ComponentGoal
 import com.flxholle.quicktiles.catalog.Gate
+import com.flxholle.quicktiles.catalog.GrantNeed
 import com.flxholle.quicktiles.catalog.HeldGrants
 import com.flxholle.quicktiles.catalog.Offer
 import com.flxholle.quicktiles.catalog.RowSwitch
@@ -11,6 +12,9 @@ import com.flxholle.quicktiles.catalog.Tile
 import com.flxholle.quicktiles.catalog.allows
 import com.flxholle.quicktiles.catalog.componentPlan
 import com.flxholle.quicktiles.catalog.decideSet
+import com.flxholle.quicktiles.catalog.missingNeeds
+import com.flxholle.quicktiles.catalog.shelfAllowsSet
+import com.flxholle.quicktiles.catalog.shelfEntries
 import com.flxholle.quicktiles.catalog.shelfSwitch
 import com.flxholle.quicktiles.catalog.storedTrueTiles
 import org.junit.Assert.assertEquals
@@ -123,5 +127,46 @@ class PublicationPlanTest {
         assertFalse(Gate.SecureAndDump.allows(HeldGrants(writeSecure = true)))
         assertTrue(Gate.SecureAndDump.allows(HeldGrants(writeSecure = true, dump = true)))
         assertEquals(Gate.SecureAndModifySystem, Tile.KeepScreenOn.gate)
+    }
+
+    @Test
+    fun shelf_hides_a_never_offered_tile_until_it_is_published() {
+        assertTrue(shelfEntries(36, emptyMap<String, Any>()).none { it.tile == Tile.ShowTaps })
+        val shown = shelfEntries(36, mapOf(Tile.ShowTaps.key to true))
+        assertEquals(RowSwitch.TurnOffOnly, shown.first { it.tile == Tile.ShowTaps }.switch)
+    }
+
+    @Test
+    fun shelf_refuses_to_turn_a_turn_off_only_row_back_on() {
+        assertFalse(shelfAllowsSet(Tile.ShowTaps, on = true, sdk = 36, published = true))
+        assertTrue(shelfAllowsSet(Tile.ShowTaps, on = false, sdk = 36, published = true))
+        assertFalse(shelfAllowsSet(Tile.ShowTaps, on = true, sdk = 36, published = false))
+        assertFalse(shelfAllowsSet(Tile.Grayscale, on = true, sdk = 30, published = true))
+        assertTrue(shelfAllowsSet(Tile.Grayscale, on = true, sdk = 29, published = false))
+        assertEquals(
+            SetDecision.TurnOn,
+            decideSet(
+                Tile.ShowTaps,
+                on = true,
+                held = HeldGrants(writeSecure = true),
+                packageStored = false,
+            ),
+        )
+    }
+
+    @Test
+    fun demo_mode_lists_each_missing_permission() {
+        assertEquals(
+            listOf(GrantNeed.WriteSecure, GrantNeed.Dump),
+            missingNeeds(Gate.SecureAndDump, HeldGrants()),
+        )
+        assertEquals(
+            emptyList<GrantNeed>(),
+            missingNeeds(Gate.SecureAndDump, HeldGrants(writeSecure = true, dump = true)),
+        )
+        assertEquals(
+            listOf(GrantNeed.ModifySystem),
+            missingNeeds(Gate.SecureAndModifySystem, HeldGrants(writeSecure = true)),
+        )
     }
 }
