@@ -20,5 +20,13 @@ fun missingNeeds(gate: Gate, held: HeldGrants): List<GrantNeed> = when (gate) {
         missing(held.modifySystem, GrantNeed.ModifySystem)
 }
 
+fun GrantNeed.isHeld(held: HeldGrants): Boolean = when (this) {
+    GrantNeed.WriteSecure -> held.writeSecure
+    GrantNeed.Dump -> held.dump
+    GrantNeed.ModifySystem -> held.modifySystem
+    GrantNeed.NotificationPolicy -> held.notificationPolicy
+    GrantNeed.Accessibility -> held.accessibility
+}
+
 private fun missing(held: Boolean, need: GrantNeed): List<GrantNeed> =
     if (held) emptyList() else listOf(need)

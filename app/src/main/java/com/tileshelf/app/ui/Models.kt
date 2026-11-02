@@ -62,7 +62,10 @@ sealed interface PickerModel {
 
 data class GrantStepModel(val need: GrantNeed, val title: String, val body: String)
 
+data class GrantStatusModel(val need: GrantNeed, val title: String, val body: String, val held: Boolean)
+
 sealed interface GrantsModel {
+    data class Overview(val rows: List<GrantStatusModel>) : GrantsModel
     data class Missing(val tileTitle: String, val steps: List<GrantStepModel>) : GrantsModel
     data class Clear(val tileTitle: String) : GrantsModel
     data object Unknown : GrantsModel

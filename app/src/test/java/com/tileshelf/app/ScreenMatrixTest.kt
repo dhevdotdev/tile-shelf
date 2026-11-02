@@ -14,6 +14,7 @@ import com.tileshelf.app.catalog.Tile
 import com.tileshelf.app.ui.AboutModel
 import com.tileshelf.app.ui.DetailModel
 import com.tileshelf.app.ui.TileShelfApp
+import com.tileshelf.app.ui.GrantStatusModel
 import com.tileshelf.app.ui.GrantStepModel
 import com.tileshelf.app.ui.GrantsModel
 import com.tileshelf.app.ui.LauncherApp
@@ -52,6 +53,7 @@ class ScreenMatrixTest {
                 RootTab.Shelf,
             )
         },
+        "grants_overview" to { page(Screen.Grants(grantsOverview()), RootTab.Grants) },
         "grants_missing" to { page(Screen.Grants(grantsMissing()), RootTab.Grants) },
         "grants_clear" to { page(Screen.Grants(GrantsModel.Clear("USB Debugging")), RootTab.Grants) },
         "grants_unknown" to { page(Screen.Grants(GrantsModel.Unknown), RootTab.Grants) },
@@ -169,6 +171,26 @@ class ScreenMatrixTest {
             ModeChoice(KeepScreenMode.Usb, "When connected to a USB port"),
             ModeChoice(KeepScreenMode.Wireless, "When connected to a wireless source"),
             ModeChoice(KeepScreenMode.Any, "When connected to any power source"),
+        ),
+    )
+
+    private fun grantsOverview() = GrantsModel.Overview(
+        listOf(
+            GrantStatusModel(
+                GrantNeed.WriteSecure,
+                "Secure settings",
+                "Run this on a computer with USB debugging:\n\nadb shell pm grant com.tileshelf.app android.permission.WRITE_SECURE_SETTINGS",
+                held = true,
+            ),
+            GrantStatusModel(
+                GrantNeed.Dump,
+                "Dump permission",
+                "Run this on a computer with USB debugging:\n\nadb shell pm grant com.tileshelf.app android.permission.DUMP",
+                held = true,
+            ),
+            GrantStatusModel(GrantNeed.ModifySystem, "Modify system settings", "To use this feature, a permission has to be granted. Please open the settings and grant the \"Modifying system settings\" permission.", held = false),
+            GrantStatusModel(GrantNeed.NotificationPolicy, "Do Not Disturb access", "To use this feature, a permission has to be granted. Please open the settings and grant the \"Do Not Disturb access\" permission.", held = false),
+            GrantStatusModel(GrantNeed.Accessibility, "Accessibility service", "To use this feature, a permission has to be granted. Please open the settings and select Tile Shelf as \"Accessibility Service\".", held = false),
         ),
     )
 

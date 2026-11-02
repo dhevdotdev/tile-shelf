@@ -104,6 +104,7 @@ fun TileShelfHost(
         tab = tab,
         onTab = { next ->
             tabName = next.name
+            if (next == RootTab.Grants) grantsName = null
             detailName = null
             pickerName = null
         },

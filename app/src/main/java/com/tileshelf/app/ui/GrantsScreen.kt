@@ -11,10 +11,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedListItem
@@ -30,6 +32,7 @@ import com.tileshelf.app.ui.theme.spacing
 @Composable
 fun GrantsScreen(model: GrantsModel, padding: PaddingValues, actions: ScreenActions) {
     when (model) {
+        is GrantsModel.Overview -> GrantsOverview(model, padding, actions)
         is GrantsModel.Missing -> MissingGrants(model, padding, actions)
         is GrantsModel.Clear -> Box(Modifier.fillMaxSize().padding(padding)) {
             EmptyPane(
@@ -44,6 +47,61 @@ fun GrantsScreen(model: GrantsModel, padding: PaddingValues, actions: ScreenActi
                 body = stringResource(R.string.unknown_tile_body),
                 icon = Icons.Rounded.Warning,
             )
+        }
+    }
+}
+
+@Composable
+private fun GrantsOverview(model: GrantsModel.Overview, padding: PaddingValues, actions: ScreenActions) {
+    val space = MaterialTheme.spacing
+    val colors = MaterialTheme.colorScheme
+    val heldCount = model.rows.count { it.held }
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(
+            start = space.margin,
+            end = space.margin,
+            top = padding.calculateTopPadding() + space.space300,
+            bottom = padding.calculateBottomPadding() + space.space600,
+        ),
+    ) {
+        item {
+            Text(
+                stringResource(R.string.grants_overview_title, heldCount, model.rows.size),
+                style = MaterialTheme.typography.headlineLargeEmphasized,
+            )
+            Text(
+                stringResource(R.string.grants_overview_body),
+                style = MaterialTheme.typography.bodyLarge,
+                color = colors.onSurfaceVariant,
+                modifier = Modifier.padding(top = space.space100, bottom = space.space300),
+            )
+        }
+        model.rows.forEachIndexed { index, row ->
+            item(key = row.need.name) {
+                val status = stringResource(if (row.held) R.string.grant_held else R.string.grant_not_held)
+                SegmentedListItem(
+                    onClick = { actions.onGrant(row.need) },
+                    shapes = ListItemDefaults.segmentedShapes(index, model.rows.size),
+                    colors = ListItemDefaults.segmentedColors(containerColor = colors.surfaceBright),
+                    leadingContent = {
+                        Icon(
+                            if (row.held) Icons.Rounded.Check else Icons.Rounded.Lock,
+                            contentDescription = null,
+                            tint = if (row.held) colors.primary else colors.onSurfaceVariant,
+                        )
+                    },
+                    overlineContent = {
+                        Text(status, color = if (row.held) colors.primary else colors.onSurfaceVariant)
+                    },
+                    supportingContent = { Text(row.body) },
+                ) {
+                    Text(row.title, style = MaterialTheme.typography.titleMedium)
+                }
+                if (index < model.rows.lastIndex) {
+                    Spacer(Modifier.height(ListItemDefaults.SegmentedGap))
+                }
+            }
         }
     }
 }

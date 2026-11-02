@@ -24,6 +24,7 @@ import com.tileshelf.app.catalog.Publication
 import com.tileshelf.app.catalog.PublishResult
 import com.tileshelf.app.catalog.StoredApp
 import com.tileshelf.app.catalog.Tile
+import com.tileshelf.app.catalog.isHeld
 import com.tileshelf.app.catalog.missingNeeds
 import com.tileshelf.app.catalog.shelfAllowsSet
 import com.tileshelf.app.utils.SharedPreferencesUtil
@@ -67,7 +68,14 @@ class DeviceActions(private val context: Context) {
     }
 
     fun loadGrants(tileName: String?): GrantsModel {
-        if (tileName.isNullOrBlank()) return GrantsModel.Unknown
+        if (tileName.isNullOrBlank()) {
+            val held = DeviceGrants.held(context)
+            return GrantsModel.Overview(
+                GrantNeed.entries.map { need ->
+                    GrantStatusModel(need, context.getString(stepTitle(need)), stepBody(need), need.isHeld(held))
+                },
+            )
+        }
         val tile = Tile.fromRoute(tileName) ?: return GrantsModel.Unknown
         val title = context.getString(tileTitleRes(tile))
         val steps = missingNeeds(tile.gate, DeviceGrants.held(context)).map { need ->

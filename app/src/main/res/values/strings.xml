@@ -140,6 +140,10 @@
     <string name="unknown_tile">This tile is not in Tile Shelf</string>
     <string name="unknown_tile_body">The link named a tile that this version does not publish.</string>
     <string name="grants_clear">Nothing left to grant</string>
+    <string name="grants_overview_title">%1$d of %2$d granted</string>
+    <string name="grants_overview_body">Some tiles need one of these before they work. Grant only what the tiles you use need.</string>
+    <string name="grant_held">Granted</string>
+    <string name="grant_not_held">Not granted</string>
     <string name="grants_clear_body">%1$s already has every permission it needs.</string>
     <string name="grant_action_copy">Copy command: %1$s</string>
     <string name="grant_action_open">Open settings: %1$s</string>
