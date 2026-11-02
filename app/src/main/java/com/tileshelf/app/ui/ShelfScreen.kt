@@ -20,7 +20,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -39,7 +38,6 @@ import androidx.compose.ui.text.input.ImeAction
 import com.tileshelf.app.R
 import com.tileshelf.app.catalog.RowSwitch
 import com.tileshelf.app.ui.theme.spacing
-import com.tileshelf.app.ui.theme.tabular
 
 @Composable
 fun ShelfScreen(
@@ -66,26 +64,20 @@ fun ShelfScreen(
 @Composable
 private fun ReadyShelf(model: ShelfModel.Ready, padding: PaddingValues, actions: ScreenActions) {
     val space = MaterialTheme.spacing
-    val haptic = LocalHapticFeedback.current
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(
             start = space.margin,
             end = space.margin,
-            top = padding.calculateTopPadding() + space.space400,
+            top = padding.calculateTopPadding() + space.space300,
             bottom = padding.calculateBottomPadding() + space.space600,
         ),
     ) {
         item {
-            PublishedHero(model.publishedCount, model.catalogSize)
-        }
-        item {
             OutlinedTextField(
                 value = model.query,
                 onValueChange = actions.onQuery,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = space.space400),
+                modifier = Modifier.fillMaxWidth(),
                 textStyle = MaterialTheme.typography.bodyLarge,
                 placeholder = {
                     Text(
@@ -110,6 +102,9 @@ private fun ReadyShelf(model: ShelfModel.Ready, padding: PaddingValues, actions:
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                 shape = MaterialTheme.shapes.extraLarge,
             )
+        }
+        if (model.query.isBlank() && model.yours.isEmpty()) {
+            item { GettingStarted() }
         }
         if (model.query.isNotBlank() && model.groups.isEmpty()) {
             item {
@@ -140,69 +135,19 @@ private fun ReadyShelf(model: ShelfModel.Ready, padding: PaddingValues, actions:
                 }
             }
         }
-        model.groups.forEach { group ->
-            item {
-                Text(
-                    group.title,
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(top = space.space300, bottom = space.space100),
-                )
+        if (model.yours.isNotEmpty()) {
+            item { GroupLabel(stringResource(R.string.your_tiles)) }
+            model.yours.forEachIndexed { index, row ->
+                item(key = "yours:${row.tile.name}") {
+                    ShelfRow(row, index, model.yours.size, actions)
+                }
             }
+        }
+        model.groups.forEach { group ->
+            item { GroupLabel(group.title) }
             group.rows.forEachIndexed { index, row ->
                 item(key = row.tile.name) {
-                    val checked = when (val rowSwitch = row.switch) {
-                        is RowSwitch.Offered -> rowSwitch.published
-                        RowSwitch.TurnOffOnly -> true
-                    }
-                    SegmentedListItem(
-                        onClick = { actions.onOpen(row.tile) },
-                        shapes = ListItemDefaults.segmentedShapes(index = index, count = group.rows.size),
-                        colors = ListItemDefaults.segmentedColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceBright,
-                        ),
-                        leadingContent = {
-                            Box(
-                                Modifier
-                                    .size(space.space500)
-                                    .clip(CircleShape)
-                                    .background(MaterialTheme.colorScheme.secondaryContainer),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                Icon(
-                                    painterResource(row.iconRes),
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSecondaryContainer,
-                                    modifier = Modifier.size(space.space300),
-                                )
-                            }
-                        },
-                        supportingContent = row.supporting?.let { note -> { Text(note) } },
-                        trailingContent = {
-                            Switch(
-                                checked = checked,
-                                onCheckedChange = { want ->
-                                    if (row.switch is RowSwitch.TurnOffOnly && want) return@Switch
-                                    haptic.performHapticFeedback(
-                                        if (want) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff,
-                                    )
-                                    actions.onToggle(row.tile, want)
-                                },
-                            )
-                        },
-                    ) {
-                        Text(
-                            row.title,
-                            style = if (checked) {
-                                MaterialTheme.typography.bodyLargeEmphasized
-                            } else {
-                                MaterialTheme.typography.bodyLarge
-                            },
-                        )
-                    }
-                    if (index < group.rows.lastIndex) {
-                        Spacer(Modifier.height(ListItemDefaults.SegmentedGap))
-                    }
+                    ShelfRow(row, index, group.rows.size, actions)
                 }
             }
         }
@@ -210,36 +155,91 @@ private fun ReadyShelf(model: ShelfModel.Ready, padding: PaddingValues, actions:
 }
 
 @Composable
-private fun PublishedHero(published: Int, catalogSize: Int) {
-    val type = MaterialTheme.typography
+private fun GroupLabel(title: String) {
     val space = MaterialTheme.spacing
-    val display = type.displayLargeEmphasized
-    val fraction = if (catalogSize == 0) 0f else published.toFloat() / catalogSize.toFloat()
-    Column {
+    Text(
+        title,
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(top = space.space300, bottom = space.space100),
+    )
+}
+
+@Composable
+private fun GettingStarted() {
+    val space = MaterialTheme.spacing
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .padding(top = space.space300)
+            .clip(MaterialTheme.shapes.large)
+            .background(MaterialTheme.colorScheme.surfaceBright)
+            .padding(space.space200),
+    ) {
         Text(
-            published.toString(),
-            style = display.tabular.copy(
-                fontSize = display.fontSize * 1.45f,
-                lineHeight = display.lineHeight * 1.45f,
-            ),
+            stringResource(R.string.getting_started_title),
+            style = MaterialTheme.typography.titleMedium,
         )
         Text(
-            stringResource(R.string.published_label),
-            style = type.titleMedium,
+            stringResource(R.string.getting_started_body),
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(top = space.space050),
         )
-        LinearWavyProgressIndicator(
-            progress = { fraction },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = space.space250),
-        )
+    }
+}
+
+@Composable
+private fun ShelfRow(row: ShelfRowModel, index: Int, count: Int, actions: ScreenActions) {
+    val space = MaterialTheme.spacing
+    val haptic = LocalHapticFeedback.current
+    val checked = row.isOn
+    SegmentedListItem(
+        onClick = { actions.onOpen(row.tile) },
+        shapes = ListItemDefaults.segmentedShapes(index = index, count = count),
+        colors = ListItemDefaults.segmentedColors(
+            containerColor = MaterialTheme.colorScheme.surfaceBright,
+        ),
+        leadingContent = {
+            Box(
+                Modifier
+                    .size(space.space500)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.secondaryContainer),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painterResource(row.iconRes),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                    modifier = Modifier.size(space.space300),
+                )
+            }
+        },
+        supportingContent = row.supporting?.let { note -> { Text(note) } },
+        trailingContent = {
+            Switch(
+                checked = checked,
+                onCheckedChange = { want ->
+                    if (row.switch is RowSwitch.TurnOffOnly && want) return@Switch
+                    haptic.performHapticFeedback(
+                        if (want) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff,
+                    )
+                    actions.onToggle(row.tile, want)
+                },
+            )
+        },
+    ) {
         Text(
-            stringResource(R.string.published_of, catalogSize),
-            style = type.labelLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(top = space.space100),
+            row.title,
+            style = if (checked) {
+                MaterialTheme.typography.bodyLargeEmphasized
+            } else {
+                MaterialTheme.typography.bodyLarge
+            },
         )
+    }
+    if (index < count - 1) {
+        Spacer(Modifier.height(ListItemDefaults.SegmentedGap))
     }
 }

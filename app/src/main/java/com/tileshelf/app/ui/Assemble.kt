@@ -6,7 +6,6 @@ import com.tileshelf.app.catalog.RowSwitch
 import com.tileshelf.app.catalog.ShelfSection
 import com.tileshelf.app.catalog.Tile
 import com.tileshelf.app.catalog.shelfEntries
-import com.tileshelf.app.catalog.storedTrueTiles
 
 fun assembleShelf(
     values: Map<String, *>,
@@ -20,24 +19,23 @@ fun assembleShelf(
     noAppNote: String,
 ): ShelfModel.Ready {
     val needle = query.trim()
-    val entries = shelfEntries(sdk, values)
+    val rows = shelfEntries(sdk, values)
+        .map { entry -> entry.toRow(titleOf, iconOf, customLabel, turnOffNote, noAppNote) }
     val groups = ShelfSection.entries.mapNotNull { section ->
         val named = sectionTitle(section)
         val sectionMatches = needle.isNotEmpty() && named.contains(needle, ignoreCase = true)
-        val rows = entries
+        val matching = rows
             .filter { it.tile.section == section }
-            .map { entry -> entry.toRow(titleOf, iconOf, customLabel, turnOffNote, noAppNote) }
             .filter { row ->
                 needle.isEmpty() || sectionMatches ||
                     row.title.contains(needle, ignoreCase = true) ||
                     row.supporting?.contains(needle, ignoreCase = true) == true
             }
-        if (rows.isEmpty()) null else ShelfGroupModel(named, rows)
+        if (matching.isEmpty()) null else ShelfGroupModel(named, matching)
     }
     return ShelfModel.Ready(
-        publishedCount = storedTrueTiles(values).size,
-        catalogSize = Tile.entries.size,
         query = query,
+        yours = if (needle.isEmpty()) rows.filter { it.isOn } else emptyList(),
         groups = groups,
     )
 }

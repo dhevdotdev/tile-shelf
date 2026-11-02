@@ -11,9 +11,8 @@ sealed interface ShelfModel {
     data object Loading : ShelfModel
     data object Failed : ShelfModel
     data class Ready(
-        val publishedCount: Int,
-        val catalogSize: Int,
         val query: String,
+        val yours: List<ShelfRowModel>,
         val groups: List<ShelfGroupModel>,
     ) : ShelfModel
 }
@@ -26,7 +25,13 @@ data class ShelfRowModel(
     val supporting: String?,
     val iconRes: Int,
     val switch: RowSwitch,
-)
+) {
+    val isOn: Boolean
+        get() = when (switch) {
+            is RowSwitch.Offered -> switch.published
+            RowSwitch.TurnOffOnly -> true
+        }
+}
 
 sealed interface DetailModel {
     val title: String

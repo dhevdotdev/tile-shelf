@@ -41,6 +41,7 @@ import org.robolectric.annotation.GraphicsMode
 class ScreenMatrixTest {
     private val screens: Map<String, @Composable () -> Unit> = mapOf(
         "shelf" to { page(Screen.Shelf(shelfReady()), RootTab.Shelf) },
+        "shelf_first_run" to { page(Screen.Shelf(shelfReady(firstRun = true)), RootTab.Shelf) },
         "shelf_filter_empty" to { page(Screen.Shelf(shelfReady(query = "zzzz", groups = emptyList())), RootTab.Shelf) },
         "shelf_loading" to { page(Screen.Shelf(ShelfModel.Loading), RootTab.Shelf) },
         "shelf_failed" to { page(Screen.Shelf(ShelfModel.Failed), RootTab.Shelf) },
@@ -110,6 +111,7 @@ class ScreenMatrixTest {
     private fun shelfReady(
         query: String = "",
         groups: List<ShelfGroupModel>? = null,
+        firstRun: Boolean = false,
     ): ShelfModel.Ready {
         val built = groups ?: listOf(
             ShelfGroupModel(
@@ -155,12 +157,17 @@ class ScreenMatrixTest {
                 ),
             ),
         )
+        val shown = if (firstRun) built.map { group -> group.copy(rows = group.rows.map(::turnedOff)) } else built
         return ShelfModel.Ready(
-            publishedCount = 5,
-            catalogSize = 55,
             query = query,
-            groups = built,
+            yours = if (query.isBlank()) shown.flatMap { it.rows }.filter { it.isOn } else emptyList(),
+            groups = shown,
         )
+    }
+
+    private fun turnedOff(row: ShelfRowModel): ShelfRowModel = when (row.switch) {
+        is RowSwitch.Offered -> row.copy(switch = RowSwitch.Offered(false))
+        RowSwitch.TurnOffOnly -> row.copy(switch = RowSwitch.Offered(false), supporting = null)
     }
 
     private fun keepScreen() = DetailModel.KeepScreen(
