@@ -1,4 +1,4 @@
-# Tile Shelf
+<img src="docs/banner.svg" alt="Tile Shelf" width="100%">
 
 Tile Shelf adds the Quick Settings tiles Android left out, more than 50 of them: media controls, shortcuts to settings pages, screen and sound toggles, developer switches, and a tile that clears the clipboard. It runs on Android 7 and later.
 
