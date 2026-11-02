@@ -90,7 +90,7 @@ private fun MissingGrants(model: GrantsModel.Missing, padding: PaddingValues, ac
         item {
             Column(Modifier.padding(top = space.space300)) {
                 model.steps.forEachIndexed { index, step ->
-                    val label = stringResource(actionLabel(step.need)) + " " + step.title
+                    val label = stringResource(actionLabel(step.need), step.title)
                     if (index == 0) {
                         Button(
                             onClick = { actions.onGrant(step.need) },
@@ -119,6 +119,6 @@ private fun MissingGrants(model: GrantsModel.Missing, padding: PaddingValues, ac
 }
 
 private fun actionLabel(need: GrantNeed): Int = when (need) {
-    GrantNeed.WriteSecure, GrantNeed.Dump -> R.string.copy_command
-    GrantNeed.ModifySystem, GrantNeed.NotificationPolicy, GrantNeed.Accessibility -> R.string.open_settings
+    GrantNeed.WriteSecure, GrantNeed.Dump -> R.string.grant_action_copy
+    GrantNeed.ModifySystem, GrantNeed.NotificationPolicy, GrantNeed.Accessibility -> R.string.grant_action_open
 }

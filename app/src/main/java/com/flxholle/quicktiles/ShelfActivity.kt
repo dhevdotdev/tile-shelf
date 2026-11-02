@@ -39,11 +39,6 @@ class ShelfActivity : ComponentActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        Publication.reconcileShelf(this)
-    }
-
     override fun onResume() {
         super.onResume()
         Publication.reconcileShelf(this)

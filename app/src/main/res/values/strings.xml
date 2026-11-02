@@ -172,6 +172,8 @@
     <string name="unknown_tile_body">The link named a tile that this version does not publish.</string>
     <string name="grants_clear">Nothing left to grant</string>
     <string name="grants_clear_body">%1$s already has every permission it needs.</string>
+    <string name="grant_action_copy">Copy command: %1$s</string>
+    <string name="grant_action_open">Open settings: %1$s</string>
     <string name="grant_secure">Secure settings</string>
     <string name="grant_secure_body">Run this on a computer with USB debugging:\n\n%1$s</string>
     <string name="grant_dump">Dump permission</string>
