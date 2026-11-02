@@ -6,11 +6,11 @@ import android.provider.Settings
 import android.view.Surface
 import android.view.WindowManager
 import com.tileshelf.app.R
-import com.tileshelf.app.abstract_tiles.WriteSecureSettingsTileService
+import com.tileshelf.app.abstract_tiles.ModifySystemSettingsTileService
 import com.tileshelf.app.utils.WriteSystemSettingsUtils
 
 
-class FixRotationTileService : WriteSecureSettingsTileService<Int>() {
+class FixRotationTileService : ModifySystemSettingsTileService<Int>() {
     companion object {
         const val SETTING_AUTO_ROTATION = Settings.System.ACCELEROMETER_ROTATION
         const val SETTING_ROTATION = Settings.System.USER_ROTATION

@@ -4,10 +4,10 @@ import android.graphics.drawable.Icon
 import android.provider.Settings
 import android.view.Surface
 import com.tileshelf.app.R
-import com.tileshelf.app.abstract_tiles.WriteSecureSettingsTileService
+import com.tileshelf.app.abstract_tiles.ModifySystemSettingsTileService
 import com.tileshelf.app.utils.WriteSystemSettingsUtils
 
-class RotationSwitchTileService : WriteSecureSettingsTileService<Int>() {
+class RotationSwitchTileService : ModifySystemSettingsTileService<Int>() {
     companion object {
         const val SETTING_AUTO_ROTATION = Settings.System.ACCELEROMETER_ROTATION
         const val SETTING_ROTATION = Settings.System.USER_ROTATION

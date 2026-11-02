@@ -28,10 +28,10 @@ Most tiles need nothing beyond the app. Some change system settings and need a o
 | Search settings, Languages, Personal dictionary, Privacy, Display, Home app, Notification history, VPN, Data usage, Screen cast, Connected devices, About phone, Developer options, Battery | None |
 | Clear clipboard | None |
 | Counter | None. Reset the count from the tile's detail screen. |
-| Screen timeout, Adjust brightness, Adaptive brightness, Vibrate on calls | One-time Modify system settings |
+| Screen timeout, Adjust brightness, Adaptive brightness, Vibrate on calls, Force rotation, Fix rotation | One-time Modify system settings |
 | Keep screen on | Modify system settings and an adb grant of `WRITE_SECURE_SETTINGS`. The detail screen chooses AC, USB, wireless, or any power source. |
 | Switch volume modes, Switch between loud and silence | One-time Do Not Disturb access |
-| USB debugging, Heads-up, Force rotation, Fix rotation, Animator duration, Disable all animations, Always finish activities | adb grant of `android.permission.WRITE_SECURE_SETTINGS` |
+| USB debugging, Heads-up, Animator duration, Disable all animations, Always finish activities | adb grant of `android.permission.WRITE_SECURE_SETTINGS` |
 | Demo mode | adb grants of `WRITE_SECURE_SETTINGS` and `DUMP` |
 | Screenshot, Lock screen, Split screen, Power menu | Enable the Tile Shelf accessibility service. Screenshot and lock screen appear from API 28. |
 | Grayscale | adb `WRITE_SECURE_SETTINGS`. The row is hidden from API 30 up unless it was already on, in which case you can only turn it off. |

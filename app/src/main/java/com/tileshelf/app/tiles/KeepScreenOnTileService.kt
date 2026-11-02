@@ -41,17 +41,9 @@ class KeepScreenOnTileService : WriteSecureSettingsTileService<Int>() {
     override fun queryValue(): Int {
         val screenTimeout = WriteSystemSettingsUtils.getIntFromSystemSettings(contentResolver, ScreenTimeoutTileService.SETTING)
         val pluggedState = WriteSystemSettingsUtils.getIntFromGlobalSettings(contentResolver, SETTING)
-
         if (screenTimeout != Int.MAX_VALUE)
             SharedPreferencesUtil.setScreenTimeout(this, screenTimeout)
-
-        return if (pluggedState == OFF) {
-            if (screenTimeout == Int.MAX_VALUE)
-                ANY
-            else
-                pluggedState
-        } else
-            pluggedState
+        return if (screenTimeout == Int.MAX_VALUE) ANY else pluggedState
     }
 
     override fun reset() {
@@ -60,15 +52,9 @@ class KeepScreenOnTileService : WriteSecureSettingsTileService<Int>() {
 
     override fun saveValue(value: Int): Boolean {
         val screenTimeout = WriteSystemSettingsUtils.getIntFromSystemSettings(contentResolver, ScreenTimeoutTileService.SETTING)
-        return if (value == ANY) {
-            SharedPreferencesUtil.setScreenTimeout(this, screenTimeout)
-            WriteSystemSettingsUtils.setIntToSystemSettings(contentResolver, ScreenTimeoutTileService.SETTING, Int.MAX_VALUE)
-            WriteSystemSettingsUtils.setIntToGlobalSettings(contentResolver, SETTING, PLUGGED_AC)
-        } else {
-            if (screenTimeout == Int.MAX_VALUE)
-                WriteSystemSettingsUtils.setIntToSystemSettings(contentResolver, ScreenTimeoutTileService.SETTING, SharedPreferencesUtil.getScreenTimeout(this))
-            WriteSystemSettingsUtils.setIntToGlobalSettings(contentResolver, SETTING, value)
-        }
+        if (screenTimeout == Int.MAX_VALUE)
+            WriteSystemSettingsUtils.setIntToSystemSettings(contentResolver, ScreenTimeoutTileService.SETTING, SharedPreferencesUtil.getScreenTimeout(this))
+        return WriteSystemSettingsUtils.setIntToGlobalSettings(contentResolver, SETTING, value)
     }
 
     override fun getValueList(): List<Int> {
