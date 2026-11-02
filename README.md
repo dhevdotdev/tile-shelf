@@ -1,30 +1,21 @@
 # Tile Shelf
 
-Tile Shelf is a fork of [QuickTiles](https://gitlab.com/flxholle/quick-tiles) by flxholle, based on version 1.8 (versionCode 18, `com.asdoi.quicktiles`). Most of the tile code is theirs and the full upstream history is kept in this repository. This fork adds quick settings tiles on Android and installs beside the original app. The launcher name is Tile Shelf. The application id is `com.tileshelf.app`. There are no ads, no analytics, and no advertising id.
+More than 50 extra Quick Settings tiles for Android 7 and later: media controls, shortcuts to settings pages, screen and sound toggles, developer switches, and a tile that clears the clipboard.
 
-This is not the official QuickTiles app and is not affiliated with its author. This program is free software under GPL-3.0-or-later. See `LICENSE`.
+<p>
+<img src="app/screenshots/matrix/light/shelf.png" alt="The tile shelf in light theme" width="260">
+<img src="app/screenshots/matrix/dark/shelf.png" alt="The tile shelf in dark theme" width="260">
+</p>
 
-The screens use Material 3 Expressive (`androidx.compose.material3:material3:1.5.0-beta02`). The new tile in this version is Clear clipboard. A caffeine tile, a sync tile, and home-screen widgets are not in this version.
+Tile Shelf has no ads, no analytics and no advertising id. It does not use root.
 
-## Build
+## Adding a tile
 
-You need JDK 21 and Android SDK platform 37.
-
-`compileSdk` is 37 because `androidx.compose.material3:material3:1.5.0-beta02` and the Compose 1.12 libraries it pulls require compileSdk 37. `checkDebugAarMetadata` fails on compileSdk 36. `targetSdk` stays 36. `minSdk` stays 24, so the debug APK still installs on Android 15, including a OnePlus 13R.
-
-```sh
-./gradlew :app:assembleDebug
-./gradlew :app:testDebugUnitTest
-./gradlew :app:recordRoborazziDebug
-```
-
-The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. Roborazzi writes `app/screenshots/matrix/`.
-
-Turning a tile on in the app publishes it to the quick settings editor. On Android 13 and later the system then asks whether to add the tile to quick settings, and the choice is yours. On older versions, add it from the quick settings editor yourself. The app never places a tile without that confirmation.
+Turn a tile on in Tile Shelf and it appears in the Quick Settings editor. On Android 13 and later the system then asks whether to add the tile to Quick Settings, and you choose. On older versions, add it from the Quick Settings editor yourself. Tile Shelf never places a tile without your confirmation.
 
 ## Tiles
 
-Tiles with no extra grant need nothing beyond the app. Clear clipboard is one of those. It calls `ClipboardManager.clearPrimaryClip()` from the tile service on API 28 and above. On older APIs, and if that call throws, it sets an empty clip. The tile shows "Clipboard cleared" on its subtitle, or on its label below API 29. Keyboard clipboard histories, including Gboard and the OnePlus and Samsung keyboards, keep their own copies. An app cannot clear those.
+Most tiles need nothing beyond the app. Some change system settings and need a one-time permission, and a few need a permission that only adb can grant. Tile Shelf shows what each tile needs and walks you through it.
 
 | Tile | Grant |
 | --- | --- |
@@ -43,37 +34,41 @@ Tiles with no extra grant need nothing beyond the app. Clear clipboard is one of
 | Grayscale | adb `WRITE_SECURE_SETTINGS`. The row is hidden from API 30 up unless it was already on, in which case you can only turn it off. |
 | Show taps | Not offered. A stored on value can only be turned off. Writing `show_touches` throws on this targetSdk. |
 
-The adb form is:
+To grant the adb permissions, connect the phone with USB debugging on and run:
 
 ```sh
 adb shell pm grant com.tileshelf.app android.permission.WRITE_SECURE_SETTINGS
 adb shell pm grant com.tileshelf.app android.permission.DUMP
 ```
 
-The upstream wireless USB debugging tile needs root. This fork does not include it and does not request root.
+Clear clipboard calls `ClipboardManager.clearPrimaryClip()` from the tile service on API 28 and above. On older APIs, and if that call throws, it sets an empty clip. Keyboard clipboard histories, including Gboard and the OnePlus and Samsung keyboards, keep their own copies, and an app cannot clear those.
 
 ## Limits
 
-Publishing a tile does not add it to the shade by itself. If you decline the add prompt, or you are on Android 12 or older, add it from the quick settings editor. Android may stop showing the prompt for a tile you have declined several times.
-
-Clear clipboard does not clear keyboard clipboard history.
+Turning a tile on does not add it to Quick Settings by itself. If you decline the add prompt, or you are on Android 12 or older, add it from the Quick Settings editor. Android may stop showing the prompt for a tile you have declined several times.
 
 Turning a tile off does not undo the system setting that tile last wrote.
 
 A failed grant leaves the switch off. Grant the permission, then turn the tile on again.
 
-## Next step
+## Build
 
-Add a caffeine keep-screen-awake tile with a foreground service, and note how OnePlus battery optimisation treats that service. That tile is deferred from this version.
+You need JDK 21 and Android SDK platform 37.
 
-## Credits
+```sh
+./gradlew :app:assembleDebug
+./gradlew :app:testDebugUnitTest
+./gradlew :app:recordRoborazziDebug
+```
 
-Icons. The app icon is original to this fork. The split-screen icon is by Smashicons on Flaticon. The upstream README also credits a later icon to DALL-E 3.
+The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. Roborazzi writes the screenshot matrix to `app/screenshots/matrix/`.
 
-Code used by the original project:
+`compileSdk` is 37 because Material 3 Expressive (`androidx.compose.material3:material3:1.5.0-beta02`) and the Compose 1.12 libraries it pulls in require it. `targetSdk` is 36 and `minSdk` is 24.
 
-- Dev-Tiles by Mustafa Ali, Apache-2.0
-- Dev-QuickSettings by Adrián García, Apache-2.0
-- Adaptive Brightness Tile by rascarlo, GPL-3.0
-- PowerButtonTile by rascarlo, GPL-3.0
-- Greyscale by fei-ke, Apache-2.0
+## Credits and license
+
+Tile Shelf is based on [QuickTiles](https://gitlab.com/flxholle/quick-tiles) 1.8, written by asdoi and maintained by flxholle (Felix Hollederer), with help from its contributors. Most of the tile services come from QuickTiles, and its full history is kept in this repository. Tile Shelf is not the official QuickTiles app and is not affiliated with its authors.
+
+QuickTiles in turn used code from Dev-Tiles by Mustafa Ali (Apache-2.0), Dev-QuickSettings by Adrián García (Apache-2.0), Adaptive Brightness Tile and PowerButtonTile by rascarlo (GPL-3.0), and Greyscale by fei-ke (Apache-2.0). Files from those projects keep their own license headers. The split-screen icon is by Smashicons from Flaticon.
+
+Tile Shelf is free software under the GNU General Public License, version 3 or later. See `LICENSE` for the license and `NOTICE` for what changed from QuickTiles.

@@ -39,6 +39,7 @@ fun AboutScreen(model: AboutModel, padding: PaddingValues, actions: ScreenAction
 private fun AboutReady(model: AboutModel.Ready, padding: PaddingValues) {
     val space = MaterialTheme.spacing
     val credits = listOf(
+        stringResource(R.string.credit_quicktiles) to stringResource(R.string.credit_gplv3),
         stringResource(R.string.credit_dev_tiles) to stringResource(R.string.credit_apache),
         stringResource(R.string.credit_dev_quicksettings) to stringResource(R.string.credit_apache),
         stringResource(R.string.credit_adaptive_brightness) to stringResource(R.string.credit_gplv3),
@@ -57,11 +58,11 @@ private fun AboutReady(model: AboutModel.Ready, padding: PaddingValues) {
     ) {
         item {
             Text(
-                stringResource(R.string.about_fork_title),
+                stringResource(R.string.app_name),
                 style = MaterialTheme.typography.headlineLargeEmphasized,
             )
             Text(
-                stringResource(R.string.about_fork_body),
+                stringResource(R.string.about_tagline),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = space.space150),
@@ -69,7 +70,13 @@ private fun AboutReady(model: AboutModel.Ready, padding: PaddingValues) {
             Text(
                 stringResource(R.string.about_version, model.versionName),
                 style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(top = space.space200, bottom = space.space300),
+                modifier = Modifier.padding(top = space.space200),
+            )
+            Text(
+                stringResource(R.string.about_legal),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = space.space150, bottom = space.space300),
             )
             Text(
                 stringResource(R.string.credits),

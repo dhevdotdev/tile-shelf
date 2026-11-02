@@ -152,11 +152,12 @@
     <string name="grant_accessibility">Accessibility service</string>
     <string name="copy_command">Copy command</string>
     <string name="copied">Copied</string>
-    <string name="about_fork_title">Fork of QuickTiles</string>
-    <string name="about_fork_body">Tile Shelf is a fork of QuickTiles. The original author is flxholle. This program is free software under GPL-3.0-or-later.</string>
+    <string name="about_tagline">More than 50 extra Quick Settings tiles.</string>
+    <string name="about_legal">Copyright © 2026 Dhev Sabharish Sivakumar. Tile Shelf is free software under the GNU GPL, version 3 or later, and comes with no warranty.</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_unreadable">App info could not be read</string>
     <string name="about_unreadable_body">The version and the licence could not be loaded.</string>
+    <string name="credit_quicktiles">Based on QuickTiles by asdoi and flxholle</string>
     <string name="credit_dev_tiles">Dev-Tiles by Mustafa Ali</string>
     <string name="credit_dev_quicksettings">Dev-QuickSettings by Adrián García</string>
     <string name="credit_adaptive_brightness">Adaptive Brightness Tile by rascarlo</string>

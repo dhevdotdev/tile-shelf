@@ -1,0 +1,37 @@
+Tile Shelf
+Copyright (C) 2026 Dhev Sabharish Sivakumar
+
+Tile Shelf is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version. See LICENSE for the full text.
+
+Tile Shelf is based on QuickTiles 1.8
+https://gitlab.com/flxholle/quick-tiles
+Copyright (C) 2020 asdoi, maintained by Felix Hollederer (flxholle),
+with contributions from the QuickTiles contributors.
+
+Changes from QuickTiles 1.8, made by Dhev Sabharish Sivakumar starting
+2026-11-01. The git history records every change and its date.
+
+- Renamed the app to Tile Shelf with the application id and Kotlin
+  package com.tileshelf.app, and replaced the launcher icon.
+- Rewrote the screens in Jetpack Compose with Material 3 Expressive,
+  including the tile catalog, the grants flow and the about screen.
+- Added the Clear clipboard tile and the system add-tile prompt.
+- Removed the root-only wireless debugging tile, the old settings
+  screens, the translations, the store listings and the GitLab CI
+  configuration.
+
+Files that carry their own copyright and license header keep it. They
+come from these projects, which QuickTiles used:
+
+- Dev-Tiles by Mustafa Ali, Apache License 2.0
+- Dev-QuickSettings by Adrián García, Apache License 2.0
+- Adaptive Brightness Tile by rascarlo, GPL-3.0
+- PowerButtonTile by rascarlo, GPL-3.0
+- Greyscale by fei-ke, Apache License 2.0
+
+The split-screen tile icon is by Smashicons from Flaticon. Google Sans
+Flex is under the SIL Open Font License, see
+app/src/main/assets/google_sans_flex_OFL.txt.
