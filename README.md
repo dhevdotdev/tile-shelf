@@ -44,6 +44,10 @@ adb shell pm grant com.tileshelf.app android.permission.WRITE_SECURE_SETTINGS
 adb shell pm grant com.tileshelf.app android.permission.DUMP
 ```
 
+On OnePlus, Oppo and Realme phones, turn on Disable permission monitoring in Developer options first, or `pm grant` fails with a SecurityException.
+
+The accessibility switch for an app installed outside an app store starts greyed out on Android 13 and later. Open App info for Tile Shelf, tap the menu, choose Allow restricted settings, then turn on Tile Shelf under Accessibility.
+
 Clear clipboard calls `ClipboardManager.clearPrimaryClip()` from the tile service on API 28 and above. On older APIs, and if that call throws, it sets an empty clip. Keyboard clipboard histories, including Gboard and the OnePlus and Samsung keyboards, keep their own copies, and an app cannot clear those.
 
 ## Limits

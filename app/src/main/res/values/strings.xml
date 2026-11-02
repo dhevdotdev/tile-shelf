@@ -94,7 +94,7 @@
     <string name="select_an_app">Select an app</string>
 
     <string name="an_error_occurred">An error occurred</string>
-    <string name="permission_accessibility_service_description">To use this feature, a permission has to be granted. Please open the settings and select %s as \"Accessibility Service\".</string>
+    <string name="permission_accessibility_service_description">Open the settings and turn on %1$s under Accessibility. If the switch is greyed out, open App info for %1$s, tap the menu and choose Allow restricted settings first.</string>
     <string name="accessibility_service_description">This service is required for some tiles in order to work.</string>
     <string name="lock_screen">Lock Screen</string>
     <string name="screenshot">Screenshot</string>
@@ -149,9 +149,9 @@
     <string name="grant_action_copy">Copy command: %1$s</string>
     <string name="grant_action_open">Open settings: %1$s</string>
     <string name="grant_secure">Secure settings</string>
-    <string name="grant_secure_body">Run this on a computer with USB debugging:\n\n%1$s</string>
+    <string name="grant_secure_body">Run this on a computer with USB debugging:\n\n%1$s\n\nOn OnePlus, Oppo and Realme phones, first turn on Disable permission monitoring in Developer options, or the command is refused.</string>
     <string name="grant_dump">Dump permission</string>
-    <string name="grant_dump_body">Run this on a computer with USB debugging:\n\n%1$s</string>
+    <string name="grant_dump_body">Run this on a computer with USB debugging:\n\n%1$s\n\nOn OnePlus, Oppo and Realme phones, first turn on Disable permission monitoring in Developer options, or the command is refused.</string>
     <string name="grant_modify">Modify system settings</string>
     <string name="grant_notification_policy">Do Not Disturb access</string>
     <string name="grant_accessibility">Accessibility service</string>
