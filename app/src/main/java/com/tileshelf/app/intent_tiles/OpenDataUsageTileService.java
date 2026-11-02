@@ -13,6 +13,10 @@ public class OpenDataUsageTileService extends IntentTileService {
         Intent intent;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
             intent = new Intent(Settings.ACTION_DATA_USAGE_SETTINGS);
+            Intent settingsApp = new Intent(intent).setPackage("com.android.settings");
+            if (settingsApp.resolveActivity(getPackageManager()) != null) {
+                intent = settingsApp;
+            }
         } else {
             intent = new Intent();
             intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$DataUsageSummaryActivity"));

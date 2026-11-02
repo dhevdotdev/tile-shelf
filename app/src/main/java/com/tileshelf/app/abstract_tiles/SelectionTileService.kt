@@ -36,9 +36,7 @@ abstract class SelectionTileService<T : Any> : BaseTileService() {
     }
 
     private fun setNextValue() {
-        val valueList = getValueList()
-        val newIndex = ((valueList.indexOf(value) + 1) % valueList.size)
-        val newValue = valueList[newIndex]
+        val newValue = nextValue(value, getValueList())
 
         if (checkPermission()) {
             if (saveValue(newValue)) {
@@ -64,6 +62,9 @@ abstract class SelectionTileService<T : Any> : BaseTileService() {
     abstract fun isActive(value: T): Boolean
 
     abstract fun getValueList(): List<T>
+
+    open fun nextValue(current: T, values: List<T>): T =
+        values[(values.indexOf(current) + 1) % values.size]
 
     abstract fun queryValue(): T
 

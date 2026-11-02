@@ -16,6 +16,7 @@
 
 package com.tileshelf.app.tiles
 
+import android.content.res.Resources
 import android.graphics.drawable.Icon
 import android.provider.Settings
 import com.tileshelf.app.R
@@ -36,22 +37,28 @@ class BrightnessTileService : ModifySystemSettingsTileService<Int>() {
     }
 
     override fun reset() {
-        saveValue(128)
+        saveValue(maxBrightness() / 2)
     }
 
     override fun saveValue(value: Int): Boolean {
         return WriteSystemSettingsUtils.setIntToSystemSettings(contentResolver, SETTING, value)
     }
 
-    override fun getValueList(): List<Int> {
-        return listOf(0, 85, 170, 255)
+    override fun getValueList(): List<Int> = brightnessSteps(maxBrightness())
+
+    override fun nextValue(current: Int, values: List<Int>): Int = nextBrightness(current, values)
+
+    private fun maxBrightness(): Int {
+        val system = Resources.getSystem()
+        val id = system.getIdentifier("config_screenBrightnessSettingMaximum", "integer", "android")
+        return if (id == 0) 255 else system.getInteger(id)
     }
 
     override fun getIcon(value: Int): Icon {
         val iconResource =
                 if (value <= 0)
                     R.drawable.ic_brightness_low
-                else if (value <= 170)
+                else if (value <= getValueList()[2])
                     R.drawable.ic_brightness_medium
                 else
                     R.drawable.ic_brightness_high
@@ -65,3 +72,11 @@ class BrightnessTileService : ModifySystemSettingsTileService<Int>() {
         return getString(R.string.adjust_brightness)
     }
 }
+
+internal fun brightnessSteps(max: Int): List<Int> {
+    val top = max.coerceAtLeast(1)
+    return listOf(0, top / 3, top * 2 / 3, top)
+}
+
+internal fun nextBrightness(current: Int, steps: List<Int>): Int =
+    steps.firstOrNull { it > current } ?: steps.first()
