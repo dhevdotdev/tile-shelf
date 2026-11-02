@@ -100,6 +100,10 @@ class ScreenMatrixTest {
     @Config(sdk = [35], qualifiers = "w700dp-h1000dp-xhdpi")
     fun medium() = renderAll("medium", dark = false)
 
+    @Test
+    @Config(sdk = [35], qualifiers = "w1280dp-h800dp-mdpi")
+    fun expanded() = renderAll("expanded", dark = false)
+
     private fun row(
         tile: Tile,
         title: String,

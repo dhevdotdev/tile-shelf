@@ -21,6 +21,7 @@ import androidx.compose.material3.SegmentedListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.res.stringResource
 import com.tileshelf.app.R
 import com.tileshelf.app.ui.theme.spacing
@@ -68,7 +69,7 @@ private fun CounterDetail(model: DetailModel.Counter, padding: PaddingValues, ac
             modifier = Modifier.padding(top = space.space050),
         )
         Button(
-            onClick = actions.onResetCounter,
+            onClick = withHaptic(HapticFeedbackType.Confirm, actions.onResetCounter),
             shapes = ButtonDefaults.shapesFor(ButtonDefaults.MediumContainerHeight),
             contentPadding = ButtonDefaults.contentPaddingFor(ButtonDefaults.MediumContainerHeight),
             modifier = Modifier.padding(top = space.space500),
@@ -110,7 +111,7 @@ private fun KeepDetail(model: DetailModel.KeepScreen, padding: PaddingValues, ac
             val selected = choice.mode == model.mode
             SegmentedListItem(
                 selected = selected,
-                onClick = { actions.onKeepMode(choice.mode) },
+                onClick = withHaptic(HapticFeedbackType.SegmentTick) { actions.onKeepMode(choice.mode) },
                 shapes = ListItemDefaults.segmentedShapes(index, model.choices.size),
                 colors = ListItemDefaults.segmentedColors(
                     containerColor = MaterialTheme.colorScheme.surfaceBright,
@@ -159,7 +160,7 @@ private fun CustomReadyDetail(model: DetailModel.CustomReady, padding: PaddingVa
             )
         } else {
             Button(
-                onClick = actions.onPublish,
+                onClick = withHaptic(HapticFeedbackType.ToggleOn, actions.onPublish),
                 shapes = ButtonDefaults.shapesFor(height),
                 contentPadding = ButtonDefaults.contentPaddingFor(height),
                 modifier = Modifier.padding(top = space.space400),

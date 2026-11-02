@@ -28,6 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -225,4 +227,13 @@ private fun ShapeCluster(icon: ImageVector) {
 @Composable
 private fun Blob(shape: RoundedPolygon, color: Color, size: Dp, modifier: Modifier) {
     Box(modifier.size(size).clip(shape.toShape()).background(color))
+}
+
+@Composable
+fun withHaptic(type: HapticFeedbackType, action: () -> Unit): () -> Unit {
+    val haptic = LocalHapticFeedback.current
+    return {
+        haptic.performHapticFeedback(type)
+        action()
+    }
 }

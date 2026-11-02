@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.res.stringResource
 import com.tileshelf.app.R
 import com.tileshelf.app.ui.theme.spacing
@@ -103,7 +104,7 @@ private fun PickerReady(
         model.apps.forEachIndexed { index, app ->
             item(key = app.packageName) {
                 SegmentedListItem(
-                    onClick = { actions.onPickApp(app) },
+                    onClick = withHaptic(HapticFeedbackType.Confirm) { actions.onPickApp(app) },
                     shapes = ListItemDefaults.segmentedShapes(index, model.apps.size),
                     colors = ListItemDefaults.segmentedColors(
                         containerColor = MaterialTheme.colorScheme.surfaceBright,
