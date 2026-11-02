@@ -25,7 +25,7 @@ class CatalogManifestTest {
         assertFalse(text.contains("usb_wifi_debugging"))
         assertTrue(Tile.entries.none { it.key == "usb_wifi_debugging" })
         assertTrue(Tile.entries.any { it.key == "clear_clipboard" })
-        assertEquals(57, Tile.entries.size)
+        assertEquals(58, Tile.entries.size)
     }
 
     @Test

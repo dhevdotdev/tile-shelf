@@ -1,6 +1,7 @@
 package com.tileshelf.app.catalog
 
 import android.content.Context
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import java.net.URI
 import java.util.Locale
@@ -27,13 +28,13 @@ object CustomApps {
     }
 
     fun write(context: Context, slot: CustomSlot, target: CustomTarget) {
-        val editor = PreferenceManager.getDefaultSharedPreferences(context).edit()
-            .putString(slot.labelKey, target.label)
-        when (target) {
-            is CustomTarget.App -> editor.putString(slot.packageKey, target.packageName).remove(slot.linkKey)
-            is CustomTarget.Link -> editor.putString(slot.linkKey, target.url).remove(slot.packageKey)
+        PreferenceManager.getDefaultSharedPreferences(context).edit {
+            putString(slot.labelKey, target.label)
+            when (target) {
+                is CustomTarget.App -> putString(slot.packageKey, target.packageName).remove(slot.linkKey)
+                is CustomTarget.Link -> putString(slot.linkKey, target.url).remove(slot.packageKey)
+            }
         }
-        editor.apply()
     }
 }
 

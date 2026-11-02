@@ -6,6 +6,7 @@ import com.tileshelf.app.accessibility_tiles.PowerDialogTileService
 import com.tileshelf.app.accessibility_tiles.ScreenshotTileService
 import com.tileshelf.app.accessibility_tiles.ToggleSplitScreenTileService
 import com.tileshelf.app.intent_tiles.BatteryTileService
+import com.tileshelf.app.intent_tiles.KeyboardPickerTileService
 import com.tileshelf.app.intent_tiles.MakeCallTileService
 import com.tileshelf.app.intent_tiles.NewAlarmTileService
 import com.tileshelf.app.intent_tiles.NewCalendarEventTileService
@@ -99,6 +100,7 @@ enum class Tile(
     CustomFour("custom_app_four", OpenAppFourTileService::class, ShelfSection.OpenApps, detail = Detail.CustomApp(CustomSlot.Four), activeTile = true),
     CustomFive("custom_app_five", OpenAppFiveTileService::class, ShelfSection.OpenApps, detail = Detail.CustomApp(CustomSlot.Five), activeTile = true),
 
+    KeyboardPicker("keyboard_picker", KeyboardPickerTileService::class, ShelfSection.Settings, activeTile = true),
     SearchSettings("search_settings", OpenSettingsSearchTileService::class, ShelfSection.Settings, activeTile = true),
     OpenLanguage("open_language", OpenLocaleTileService::class, ShelfSection.Settings, activeTile = true),
     OpenUserDictionary("open_user_dictionary", OpenUserDictionaryTileService::class, ShelfSection.Settings, activeTile = true),
@@ -149,7 +151,7 @@ enum class Tile(
             entries.associateBy { it.key }
 
         init {
-            require(entries.size == 57)
+            require(entries.size == 58)
             require(byService.size == entries.size)
             require(byKey.size == entries.size)
             val slots = entries.mapNotNull { (it.detail as? Detail.CustomApp)?.slot }
