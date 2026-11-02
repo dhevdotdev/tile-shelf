@@ -119,7 +119,7 @@
     <string name="getting_started_body">Each tile you turn on can go in Quick Settings. On Android 13 and later your phone offers to add it right away.</string>
     <string name="published_on_shelf">This tile is on.</string>
     <string name="turn_off_only">No longer offered. You can turn it off.</string>
-    <string name="no_app_chosen">No app chosen</string>
+    <string name="no_app_chosen">Nothing chosen</string>
     <string name="no_matching_tiles">No tile uses that name</string>
     <string name="no_matching_tiles_body">Try another word, or clear the search to see every tile.</string>
     <string name="tiles_unreadable">Saved tiles could not be read</string>
@@ -135,9 +135,19 @@
     <string name="apps_unreadable_body">System apps with a launcher are included. The list could not be read this time.</string>
     <string name="choose_an_app">Choose an app</string>
     <string name="change_app">Change app</string>
+    <string name="use_a_link">Use a link</string>
+    <string name="change_link">Change link</string>
+    <string name="link_dialog_title">Open a link</string>
+    <string name="link_field">Link</string>
+    <string name="link_name_field">Name (optional)</string>
+    <string name="link_hint">A web address like example.com, or an app link like geo:0,0?q=coffee</string>
+    <string name="link_invalid">That does not look like a link. Try example.com or a full address.</string>
+    <string name="link_no_app">No app on this phone can open this link.</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
     <string name="publish_tile">Turn on tile</string>
-    <string name="custom_empty_title">No app chosen</string>
-    <string name="custom_empty_body">Pick a launcher app and this tile will open it.</string>
+    <string name="custom_empty_title">Nothing chosen yet</string>
+    <string name="custom_empty_body">Pick an app or enter a link, and this tile will open it.</string>
     <string name="counter_times">times</string>
     <string name="keep_screen_lead">Stay awake while power is connected</string>
     <string name="unknown_tile">This tile is not in Tile Shelf</string>

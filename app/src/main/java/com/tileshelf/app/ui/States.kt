@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -112,6 +113,8 @@ fun EmptyPane(
     action: String? = null,
     onAction: () -> Unit = {},
     strongAction: Boolean = true,
+    secondaryAction: String? = null,
+    onSecondaryAction: () -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
     val space = MaterialTheme.spacing
@@ -157,6 +160,11 @@ fun EmptyPane(
                 ) {
                     Text(action, style = ButtonDefaults.textStyleFor(height))
                 }
+            }
+        }
+        if (secondaryAction != null) {
+            TextButton(onClick = onSecondaryAction, modifier = Modifier.padding(top = space.space100)) {
+                Text(secondaryAction)
             }
         }
     }

@@ -16,18 +16,22 @@ import androidx.preference.PreferenceManager
 import com.tileshelf.app.R
 import com.tileshelf.app.catalog.CustomApps
 import com.tileshelf.app.catalog.CustomSlot
+import com.tileshelf.app.catalog.CustomTarget
 import com.tileshelf.app.catalog.Detail
 import com.tileshelf.app.catalog.DeviceGrants
 import com.tileshelf.app.catalog.GrantNeed
 import com.tileshelf.app.catalog.KeepScreenMode
 import com.tileshelf.app.catalog.Publication
 import com.tileshelf.app.catalog.PublishResult
-import com.tileshelf.app.catalog.StoredApp
 import com.tileshelf.app.catalog.Tile
 import com.tileshelf.app.catalog.isHeld
+import com.tileshelf.app.catalog.linkLabel
 import com.tileshelf.app.catalog.missingNeeds
+import com.tileshelf.app.catalog.parseLink
 import com.tileshelf.app.catalog.shelfAllowsSet
 import com.tileshelf.app.utils.SharedPreferencesUtil
+
+enum class LinkSave { Saved, Invalid, NoApp }
 
 sealed interface ToggleOutcome {
     data object Updated : ToggleOutcome
@@ -159,7 +163,16 @@ class DeviceActions(private val context: Context) {
 
     fun writeApp(tile: Tile, app: LauncherApp) {
         val slot = (tile.detail as? Detail.CustomApp)?.slot ?: return
-        CustomApps.write(context, slot, StoredApp(app.packageName, app.label))
+        CustomApps.write(context, slot, CustomTarget.App(app.packageName, app.label))
+    }
+
+    fun saveLink(tile: Tile, raw: String, name: String): LinkSave {
+        val slot = (tile.detail as? Detail.CustomApp)?.slot ?: return LinkSave.Invalid
+        val url = parseLink(raw) ?: return LinkSave.Invalid
+        val opener = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        if (opener.resolveActivity(context.packageManager) == null) return LinkSave.NoApp
+        CustomApps.write(context, slot, CustomTarget.Link(url, name.trim().ifEmpty { linkLabel(url) }))
+        return LinkSave.Saved
     }
 
     fun grantCommand(need: GrantNeed): String? = when (need) {
@@ -189,7 +202,11 @@ class DeviceActions(private val context: Context) {
         return if (stored == null) {
             DetailModel.CustomEmpty(title)
         } else {
-            DetailModel.CustomReady(title, stored.label, stored.packageName, Publication.isOn(context, tile))
+            val (subtitle, isLink) = when (stored) {
+                is CustomTarget.App -> stored.packageName to false
+                is CustomTarget.Link -> stored.url to true
+            }
+            DetailModel.CustomReady(title, stored.label, subtitle, isLink, Publication.isOn(context, tile))
         }
     }
 

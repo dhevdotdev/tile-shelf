@@ -49,7 +49,8 @@ sealed interface DetailModel {
     data class CustomReady(
         override val title: String,
         val label: String,
-        val packageName: String,
+        val subtitle: String,
+        val isLink: Boolean,
         val published: Boolean,
     ) : DetailModel
 }
@@ -102,4 +103,5 @@ class ScreenActions(
     val onPickApp: (LauncherApp) -> Unit = { _ -> },
     val onPublish: () -> Unit = {},
     val onGrant: (GrantNeed) -> Unit = { _ -> },
+    val onSaveLink: (String, String) -> LinkSave = { _, _ -> LinkSave.Invalid },
 )

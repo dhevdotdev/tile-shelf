@@ -50,7 +50,13 @@ class ScreenMatrixTest {
         "detail_custom_empty" to { page(Screen.Detail(DetailModel.CustomEmpty("Custom App")), RootTab.Shelf) },
         "detail_custom_ready" to {
             page(
-                Screen.Detail(DetailModel.CustomReady("Custom App", "Maps", "com.google.android.apps.maps", false)),
+                Screen.Detail(DetailModel.CustomReady("Custom App", "Maps", "com.google.android.apps.maps", false, false)),
+                RootTab.Shelf,
+            )
+        },
+        "detail_custom_link" to {
+            page(
+                Screen.Detail(DetailModel.CustomReady("Custom App", "Weather", "https://weather.example.com", true, true)),
                 RootTab.Shelf,
             )
         },

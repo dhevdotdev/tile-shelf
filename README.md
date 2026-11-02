@@ -24,7 +24,7 @@ Most tiles need nothing beyond the app. Some change system settings and need a o
 | --- | --- |
 | Play/Pause, Next, Previous, Media volume, Mute media, Volume panel | None |
 | New alarm, New timer, New event, Make call, Take photo, Record video, Calculator, File manager | None |
-| Custom app, five slots | None. Pick the app in Tile Shelf before the tile can open it. |
+| Custom app, five slots | None. Pick an app, or enter a web address or app link, in Tile Shelf before the tile can open it. |
 | Search settings, Languages, Personal dictionary, Privacy, Display, Home app, Notification history, VPN, Data usage, Screen cast, Connected devices, About phone, Developer options, Battery | None |
 | Clear clipboard, Auto-sync | None |
 | Counter | None. Reset the count from the tile's detail screen. |

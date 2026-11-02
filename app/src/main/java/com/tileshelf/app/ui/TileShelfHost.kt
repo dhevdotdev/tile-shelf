@@ -143,6 +143,14 @@ fun TileShelfHost(
                 pickerName = null
                 revision++
             },
+            onSaveLink = { link, name ->
+                val tile = detailTile
+                if (tile == null) {
+                    LinkSave.Invalid
+                } else {
+                    device.saveLink(tile, link, name).also { if (it == LinkSave.Saved) revision++ }
+                }
+            },
             onPublish = {
                 val tile = detailTile ?: return@ScreenActions
                 applyToggle(tile, true)

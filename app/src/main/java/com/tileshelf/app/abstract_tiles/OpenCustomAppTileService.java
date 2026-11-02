@@ -1,6 +1,7 @@
 package com.tileshelf.app.abstract_tiles;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.service.quicksettings.Tile;
 
 import com.tileshelf.app.R;
@@ -21,6 +22,10 @@ public abstract class OpenCustomAppTileService extends IntentTileService {
 
     @Override
     public Intent createIntent() {
+        String link = SharedPreferencesUtil.getCustomPackage(this, getPreferencesKey() + "_link");
+        if (link != null && !link.trim().isEmpty()) {
+            return new Intent(Intent.ACTION_VIEW, Uri.parse(link.trim()));
+        }
         String packageName = SharedPreferencesUtil.getCustomPackage(this, getPreferencesKey());
         if (packageName == null || packageName.trim().isEmpty()) {
             return null;
@@ -31,7 +36,8 @@ public abstract class OpenCustomAppTileService extends IntentTileService {
     private void updateState() {
         Tile tile = getQsTile();
         String packageName = SharedPreferencesUtil.getCustomPackage(this, getPreferencesKey());
-        if (packageName != null) {
+        String link = SharedPreferencesUtil.getCustomPackage(this, getPreferencesKey() + "_link");
+        if (packageName != null || link != null) {
             tile.setLabel(SharedPreferencesUtil.getCustomPackage(this, getLabelPreferenceKey()));
         } else {
             tile.setLabel(getString(R.string.custom_app));
