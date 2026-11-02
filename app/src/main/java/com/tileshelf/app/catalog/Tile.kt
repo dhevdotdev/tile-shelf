@@ -38,6 +38,7 @@ import com.tileshelf.app.intent_tiles.RecordVideoTileService
 import com.tileshelf.app.intent_tiles.TakePhotoTileService
 import com.tileshelf.app.tiles.AdaptiveBrightnessTileService
 import com.tileshelf.app.tiles.AnimatorDurationTileService
+import com.tileshelf.app.tiles.AutoSyncTileService
 import com.tileshelf.app.tiles.BrightnessTileService
 import com.tileshelf.app.tiles.ClearClipboardTileService
 import com.tileshelf.app.tiles.CounterTileService
@@ -48,6 +49,7 @@ import com.tileshelf.app.tiles.FixRotationTileService
 import com.tileshelf.app.tiles.GrayscaleTileService
 import com.tileshelf.app.tiles.HeadsUpTileService
 import com.tileshelf.app.tiles.KeepScreenOnTileService
+import com.tileshelf.app.tiles.MuteMediaTileService
 import com.tileshelf.app.tiles.MediaVolumeTileService
 import com.tileshelf.app.tiles.RotationSwitchTileService
 import com.tileshelf.app.tiles.ScreenTimeoutTileService
@@ -80,6 +82,7 @@ enum class Tile(
     NextSong("next_song", NextSongTileService::class, ShelfSection.Media, activeTile = true),
     PreviousSong("previous_song", PreviousSongTileService::class, ShelfSection.Media, activeTile = true),
     MediaVolume("media_volume", MediaVolumeTileService::class, ShelfSection.Media, activeTile = true),
+    MuteMedia("mute_media", MuteMediaTileService::class, ShelfSection.Media, activeTile = false),
     OpenVolumePanel("open_volume_panel", OpenVolumePanelTileService::class, ShelfSection.Media, activeTile = true),
 
     NewAlarm("new_alarm", NewAlarmTileService::class, ShelfSection.OpenApps, activeTile = true),
@@ -124,6 +127,7 @@ enum class Tile(
     ToggleSplitScreen("toggle_split_screen", ToggleSplitScreenTileService::class, ShelfSection.Utilities, Gate.Accessibility, activeTile = true),
     VibrateCalls("vibrate_calls", VibrateCallsTileService::class, ShelfSection.Utilities, Gate.ModifySystem, activeTile = false),
     PowerDialog("power_dialog", PowerDialogTileService::class, ShelfSection.Utilities, Gate.Accessibility, activeTile = true),
+    AutoSync("auto_sync", AutoSyncTileService::class, ShelfSection.Utilities, activeTile = false),
     Battery("battery", BatteryTileService::class, ShelfSection.Utilities, activeTile = false),
     HeadsUp("heads_up", HeadsUpTileService::class, ShelfSection.Utilities, Gate.WriteSecure, activeTile = false),
 
@@ -145,7 +149,7 @@ enum class Tile(
             entries.associateBy { it.key }
 
         init {
-            require(entries.size == 55)
+            require(entries.size == 57)
             require(byService.size == entries.size)
             require(byKey.size == entries.size)
             val slots = entries.mapNotNull { (it.detail as? Detail.CustomApp)?.slot }

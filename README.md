@@ -22,11 +22,11 @@ Most tiles need nothing beyond the app. Some change system settings and need a o
 
 | Tile | Grant |
 | --- | --- |
-| Play/Pause, Next, Previous, Media volume, Volume panel | None |
+| Play/Pause, Next, Previous, Media volume, Mute media, Volume panel | None |
 | New alarm, New timer, New event, Make call, Take photo, Record video, Calculator, File manager | None |
 | Custom app, five slots | None. Pick the app in Tile Shelf before the tile can open it. |
 | Search settings, Languages, Personal dictionary, Privacy, Display, Home app, Notification history, VPN, Data usage, Screen cast, Connected devices, About phone, Developer options, Battery | None |
-| Clear clipboard | None |
+| Clear clipboard, Auto-sync | None |
 | Counter | None. Reset the count from the tile's detail screen. |
 | Screen timeout, Adjust brightness, Adaptive brightness, Vibrate on calls, Force rotation, Fix rotation | One-time Modify system settings |
 | Keep screen on | Modify system settings and an adb grant of `WRITE_SECURE_SETTINGS`. The detail screen chooses AC, USB, wireless, or any power source. |

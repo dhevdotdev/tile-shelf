@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">Tile Shelf</string>
     <string name="credits">Credits</string>
+    <string name="mute_media">Mute media</string>
+    <string name="auto_sync">Auto-sync</string>
 
     <string name="permission_notification_policy_description">To use this feature, a permission has to be granted. Please open the settings and grant the \"Do Not Disturb access\" permission.</string>
     <string name="permission_modify_system_settings_description">To use this feature, a permission has to be granted. Please open the settings and grant the \"Modifying system settings\" permission.</string>
