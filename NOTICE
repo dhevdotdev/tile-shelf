@@ -1,5 +1,5 @@
 Tile Shelf
-Copyright (C) 2026 Dhev Sabharish Sivakumar
+Copyright (C) 2026 dhevdotdev
 
 Tile Shelf is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the
@@ -11,7 +11,7 @@ https://gitlab.com/flxholle/quick-tiles
 Copyright (C) 2020 asdoi, maintained by Felix Hollederer (flxholle),
 with contributions from the QuickTiles contributors.
 
-Changes from QuickTiles 1.8, made by Dhev Sabharish Sivakumar starting
+Changes from QuickTiles 1.8, made by dhevdotdev starting
 2026-11-01. The git history records every change and its date.
 
 - Renamed the app to Tile Shelf with the application id and Kotlin
