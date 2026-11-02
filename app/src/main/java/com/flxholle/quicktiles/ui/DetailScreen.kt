@@ -1,6 +1,5 @@
 package com.flxholle.quicktiles.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,23 +7,20 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.SegmentedListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import com.flxholle.quicktiles.R
 import com.flxholle.quicktiles.ui.theme.spacing
@@ -89,7 +85,7 @@ private fun CounterDetail(model: DetailModel.Counter, padding: PaddingValues, ac
 private fun KeepDetail(model: DetailModel.KeepScreen, padding: PaddingValues, actions: ScreenActions) {
     val space = MaterialTheme.spacing
     LazyColumn(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize().selectableGroup(),
         contentPadding = PaddingValues(
             start = space.margin,
             end = space.margin,
@@ -113,30 +109,13 @@ private fun KeepDetail(model: DetailModel.KeepScreen, padding: PaddingValues, ac
             val choice = model.choices[index]
             val selected = choice.mode == model.mode
             SegmentedListItem(
+                selected = selected,
                 onClick = { actions.onKeepMode(choice.mode) },
                 shapes = ListItemDefaults.segmentedShapes(index, model.choices.size),
                 colors = ListItemDefaults.segmentedColors(
                     containerColor = MaterialTheme.colorScheme.surfaceBright,
                 ),
-                leadingContent = {
-                    Box(
-                        Modifier
-                            .size(space.space200)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.secondaryContainer),
-                    )
-                },
-                trailingContent = if (selected) {
-                    {
-                        Icon(
-                            Icons.Rounded.Check,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                        )
-                    }
-                } else {
-                    null
-                },
+                leadingContent = { RadioButton(selected = selected, onClick = null) },
             ) {
                 Text(
                     choice.label,

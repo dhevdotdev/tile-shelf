@@ -87,6 +87,10 @@ fun ErrorPane(
                 Button(
                     onClick = onAction,
                     shapes = ButtonDefaults.shapesFor(ButtonDefaults.MediumContainerHeight),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = colors.error,
+                        contentColor = colors.onError,
+                    ),
                     contentPadding = ButtonDefaults.contentPaddingFor(ButtonDefaults.MediumContainerHeight),
                     modifier = Modifier.padding(top = space.space300),
                 ) {

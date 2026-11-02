@@ -166,7 +166,7 @@ class ScreenMatrixTest {
         mode = KeepScreenMode.Any,
         choices = listOf(
             ModeChoice(KeepScreenMode.Ac, "When connected to an AC adapter"),
-            ModeChoice(KeepScreenMode.Usb, "When connected to an USB port"),
+            ModeChoice(KeepScreenMode.Usb, "When connected to a USB port"),
             ModeChoice(KeepScreenMode.Wireless, "When connected to a wireless source"),
             ModeChoice(KeepScreenMode.Any, "When connected to any power source"),
         ),
