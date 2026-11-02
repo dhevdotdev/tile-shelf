@@ -4,6 +4,14 @@ Tile Shelf adds the Quick Settings tiles Android left out, more than 50 of them:
 
 Tile Shelf has no ads, no analytics and no advertising id. It does not use root.
 
+<p>
+<img src="docs/screenshots/shelf.png" alt="The shelf: search, your tiles, then every tile by section" width="250">
+<img src="docs/screenshots/add-tile.png" alt="Android asking whether to add the Clear clipboard tile to Quick Settings" width="250">
+<img src="docs/screenshots/grants.png" alt="The Grants tab listing each permission and whether it is granted" width="250">
+</p>
+
+Left, the shelf with the tiles you turned on at the top. Middle, Android offering to add a tile to Quick Settings. Right, the Grants tab, which shows the permissions some tiles need.
+
 ## Adding a tile
 
 Turn a tile on in Tile Shelf and it appears in the Quick Settings editor. On Android 13 and later the system then asks whether to add the tile to Quick Settings, and you choose. On older versions, add it from the Quick Settings editor yourself. Tile Shelf never places a tile without your confirmation.
