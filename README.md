@@ -44,7 +44,7 @@ adb shell pm grant com.tileshelf.app android.permission.WRITE_SECURE_SETTINGS
 adb shell pm grant com.tileshelf.app android.permission.DUMP
 ```
 
-On OnePlus, Oppo and Realme phones, turn on Disable permission monitoring in Developer options first, or `pm grant` fails with a SecurityException.
+Some brands block `pm grant` from adb until you flip a switch in Developer options, and fail with a SecurityException otherwise: on OnePlus, Oppo and Realme it is Disable permission monitoring, and on Xiaomi, Redmi and Poco it is USB debugging (Security settings).
 
 The accessibility switch for an app installed outside an app store starts greyed out on Android 13 and later. Open App info for Tile Shelf, tap the menu, choose Allow restricted settings, then turn on Tile Shelf under Accessibility.
 

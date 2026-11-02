@@ -149,9 +149,9 @@
     <string name="grant_action_copy">Copy command: %1$s</string>
     <string name="grant_action_open">Open settings: %1$s</string>
     <string name="grant_secure">Secure settings</string>
-    <string name="grant_secure_body">Run this on a computer with USB debugging:\n\n%1$s\n\nOn OnePlus, Oppo and Realme phones, first turn on Disable permission monitoring in Developer options, or the command is refused.</string>
+    <string name="grant_secure_body">Run this on a computer with USB debugging:\n\n%1$s\n\nOn OnePlus, Oppo and Realme phones, first turn on Disable permission monitoring in Developer options. On Xiaomi, Redmi and Poco phones, turn on USB debugging (Security settings). Otherwise the command is refused.</string>
     <string name="grant_dump">Dump permission</string>
-    <string name="grant_dump_body">Run this on a computer with USB debugging:\n\n%1$s\n\nOn OnePlus, Oppo and Realme phones, first turn on Disable permission monitoring in Developer options, or the command is refused.</string>
+    <string name="grant_dump_body">Run this on a computer with USB debugging:\n\n%1$s\n\nOn OnePlus, Oppo and Realme phones, first turn on Disable permission monitoring in Developer options. On Xiaomi, Redmi and Poco phones, turn on USB debugging (Security settings). Otherwise the command is refused.</string>
     <string name="grant_modify">Modify system settings</string>
     <string name="grant_notification_policy">Do Not Disturb access</string>
     <string name="grant_accessibility">Accessibility service</string>
