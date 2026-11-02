@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Dhev Tiles</string>
+    <string name="app_name" translatable="false">Tile Shelf</string>
     <string name="app_icon_credit_link" translatable="false">https://www.flaticon.com/authors/nikita-golubev</string>
     <string name="open_source_libraries">Open source libraries</string>
     <string name="credits">Credits</string>
@@ -168,7 +168,7 @@
     <string name="custom_empty_body">Pick a launcher app and this tile will open it.</string>
     <string name="counter_times">times</string>
     <string name="keep_screen_lead">Stay awake while power is connected</string>
-    <string name="unknown_tile">This tile is not in Dhev Tiles</string>
+    <string name="unknown_tile">This tile is not in Tile Shelf</string>
     <string name="unknown_tile_body">The link named a tile that this version does not publish.</string>
     <string name="grants_clear">Nothing left to grant</string>
     <string name="grants_clear_body">%1$s already has every permission it needs.</string>
@@ -182,7 +182,7 @@
     <string name="copy_command">Copy command</string>
     <string name="copied">Copied</string>
     <string name="about_fork_title">Fork of QuickTiles</string>
-    <string name="about_fork_body">Dhev Tiles is a local fork. The original author is flxholle. This program is free software under GPL-3.0-or-later.</string>
+    <string name="about_fork_body">Tile Shelf is a fork of QuickTiles. The original author is flxholle. This program is free software under GPL-3.0-or-later.</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_unreadable">App info could not be read</string>
     <string name="about_unreadable_body">The version and the licence could not be loaded.</string>
@@ -191,7 +191,6 @@
     <string name="credit_adaptive_brightness">Adaptive Brightness Tile by rascarlo</string>
     <string name="credit_power_button">Power Button Tile by rascarlo</string>
     <string name="credit_greyscale">Greyscale by fei-ke</string>
-    <string name="credit_icon_freepik">App icon by Freepik</string>
     <string name="credit_icon_smashicons">Split screen icon by Smashicons</string>
     <string name="credit_apache">Apache-2.0</string>
     <string name="credit_gplv3">GPLv3</string>

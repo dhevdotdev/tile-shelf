@@ -7,7 +7,7 @@ import com.flxholle.quicktiles.catalog.RowSwitch
 import com.flxholle.quicktiles.catalog.Tile
 import com.flxholle.quicktiles.ui.AboutModel
 import com.flxholle.quicktiles.ui.DetailModel
-import com.flxholle.quicktiles.ui.DhevApp
+import com.flxholle.quicktiles.ui.TileShelfApp
 import com.flxholle.quicktiles.ui.GrantStepModel
 import com.flxholle.quicktiles.ui.GrantsModel
 import com.flxholle.quicktiles.ui.LauncherApp
@@ -59,7 +59,7 @@ class ScreenMatrixTest {
 
     @Composable
     private fun page(screen: Screen, tab: RootTab) {
-        DhevApp(screen = screen, tab = tab, onTab = {}, onUp = {}, actions = ScreenActions())
+        TileShelfApp(screen = screen, tab = tab, onTab = {}, onUp = {}, actions = ScreenActions())
     }
 
     private fun renderAll(variant: String, dark: Boolean) {
@@ -163,12 +163,12 @@ class ScreenMatrixTest {
             GrantStepModel(
                 GrantNeed.WriteSecure,
                 "Secure settings",
-                "Run this on a computer with USB debugging:\n\nadb shell pm grant com.dhev.quicktiles android.permission.WRITE_SECURE_SETTINGS",
+                "Run this on a computer with USB debugging:\n\nadb shell pm grant com.tileshelf.app android.permission.WRITE_SECURE_SETTINGS",
             ),
             GrantStepModel(
                 GrantNeed.Dump,
                 "Dump permission",
-                "Run this on a computer with USB debugging:\n\nadb shell pm grant com.dhev.quicktiles android.permission.DUMP",
+                "Run this on a computer with USB debugging:\n\nadb shell pm grant com.tileshelf.app android.permission.DUMP",
             ),
         ),
     )

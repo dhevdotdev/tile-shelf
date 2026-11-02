@@ -43,7 +43,7 @@ private val destinations = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DhevApp(
+fun TileShelfApp(
     screen: Screen,
     tab: RootTab,
     onTab: (RootTab) -> Unit,

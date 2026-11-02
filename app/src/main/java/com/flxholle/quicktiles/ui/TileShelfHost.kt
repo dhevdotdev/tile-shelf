@@ -18,7 +18,7 @@ import com.flxholle.quicktiles.catalog.Tile
 import kotlinx.coroutines.launch
 
 @Composable
-fun DhevHost(
+fun TileShelfHost(
     device: DeviceActions,
     grantsRoute: String?,
     routeToken: Int,
@@ -96,7 +96,7 @@ fun DhevHost(
         if (pickerName != null) pickerName = null else detailName = null
     }
 
-    DhevApp(
+    TileShelfApp(
         screen = screen,
         tab = tab,
         onTab = { next ->

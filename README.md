@@ -1,8 +1,8 @@
-# Dhev Tiles
+# Tile Shelf
 
-Dhev Tiles is a local fork of QuickTiles 1.8. It adds quick settings tiles on Android and installs beside the original app. The launcher name is Dhev Tiles. The application id is `com.dhev.quicktiles`. There are no ads, no analytics, and no advertising id.
+Tile Shelf is a fork of [QuickTiles](https://gitlab.com/flxholle/quick-tiles) by flxholle, based on version 1.8 (versionCode 18, `com.asdoi.quicktiles`). Most of the tile code is theirs and the full upstream history is kept in this repository. This fork adds quick settings tiles on Android and installs beside the original app. The launcher name is Tile Shelf. The application id is `com.tileshelf.app`. There are no ads, no analytics, and no advertising id.
 
-The fork starts from the F-Droid source tarball for QuickTiles 1.8, versionCode 18 (`com.asdoi.quicktiles`). The original author is flxholle. This program is free software under GPL-3.0-or-later. See `LICENSE`.
+This is not the official QuickTiles app and is not affiliated with its author. This program is free software under GPL-3.0-or-later. See `LICENSE`.
 
 The screens use Material 3 Expressive (`androidx.compose.material3:material3:1.5.0-beta02`). The new tile in this version is Clear clipboard. A caffeine tile, a sync tile, and home-screen widgets are not in this version.
 
@@ -30,7 +30,7 @@ Tiles with no extra grant need nothing beyond the app. Clear clipboard is one of
 | --- | --- |
 | Play/Pause, Next, Previous, Media volume, Volume panel | None |
 | New alarm, New timer, New event, Make call, Take photo, Record video, Calculator, File manager | None |
-| Custom app, five slots | None. Pick the app in Dhev Tiles before the tile can open it. |
+| Custom app, five slots | None. Pick the app in Tile Shelf before the tile can open it. |
 | Search settings, Languages, Personal dictionary, Privacy, Display, Home app, Notification history, VPN, Data usage, Screen cast, Connected devices, About phone, Developer options, Battery | None |
 | Clear clipboard | None |
 | Counter | None. Reset the count from the tile's detail screen. |
@@ -39,15 +39,15 @@ Tiles with no extra grant need nothing beyond the app. Clear clipboard is one of
 | Switch volume modes, Switch between loud and silence | One-time Do Not Disturb access |
 | USB debugging, Heads-up, Force rotation, Fix rotation, Animator duration, Disable all animations, Always finish activities | adb grant of `android.permission.WRITE_SECURE_SETTINGS` |
 | Demo mode | adb grants of `WRITE_SECURE_SETTINGS` and `DUMP` |
-| Screenshot, Lock screen, Split screen, Power menu | Enable the Dhev Tiles accessibility service. Screenshot and lock screen appear from API 28. |
+| Screenshot, Lock screen, Split screen, Power menu | Enable the Tile Shelf accessibility service. Screenshot and lock screen appear from API 28. |
 | Grayscale | adb `WRITE_SECURE_SETTINGS`. The row is hidden from API 30 up unless it was already on, in which case you can only turn it off. |
 | Show taps | Not offered. A stored on value can only be turned off. Writing `show_touches` throws on this targetSdk. |
 
 The adb form is:
 
 ```sh
-adb shell pm grant com.dhev.quicktiles android.permission.WRITE_SECURE_SETTINGS
-adb shell pm grant com.dhev.quicktiles android.permission.DUMP
+adb shell pm grant com.tileshelf.app android.permission.WRITE_SECURE_SETTINGS
+adb shell pm grant com.tileshelf.app android.permission.DUMP
 ```
 
 The upstream wireless USB debugging tile needs root. This fork does not include it and does not request root.
@@ -68,7 +68,7 @@ Add a caffeine keep-screen-awake tile with a foreground service, and note how On
 
 ## Credits
 
-Icons. The app icon credits include Freepik on Flaticon. The split-screen icon is by Smashicons on Flaticon. The upstream README also credits a later icon to DALL-E 3.
+Icons. The app icon is original to this fork. The split-screen icon is by Smashicons on Flaticon. The upstream README also credits a later icon to DALL-E 3.
 
 Code used by the original project:
 

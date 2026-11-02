@@ -11,7 +11,7 @@ android {
     buildToolsVersion = "37.0.0"
 
     defaultConfig {
-        applicationId = "com.dhev.quicktiles"
+        applicationId = "com.tileshelf.app"
         minSdk = 24
         targetSdk = 36
         versionCode = 18

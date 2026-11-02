@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.flxholle.quicktiles.catalog.Publication
 import com.flxholle.quicktiles.ui.DeviceActions
-import com.flxholle.quicktiles.ui.DhevHost
+import com.flxholle.quicktiles.ui.TileShelfHost
 import com.flxholle.quicktiles.ui.theme.AppTheme
 
 class ShelfActivity : ComponentActivity() {
@@ -29,7 +29,7 @@ class ShelfActivity : ComponentActivity() {
             val token = routeToken
             val tick = generation
             AppTheme(dynamicColor = true) {
-                DhevHost(
+                TileShelfHost(
                     device = remember { DeviceActions(this@ShelfActivity) },
                     grantsRoute = route,
                     routeToken = token,
@@ -58,7 +58,7 @@ class ShelfActivity : ComponentActivity() {
     }
 
     companion object {
-        const val EXTRA_ROUTE = "com.dhev.quicktiles.ROUTE"
+        const val EXTRA_ROUTE = "com.tileshelf.app.ROUTE"
 
         fun grantsName(intent: Intent?): String? {
             val raw = intent?.getStringExtra(EXTRA_ROUTE) ?: return null

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Dhev Tiles</string>
+    <string name="app_name" translatable="false">Tile Shelf</string>
     <string name="app_icon_credit_link" translatable="false">https://www.flaticon.com/authors/nikita-golubev</string>
     <string name="open_source_libraries">Açık kaynak kütüphaneler</string>
     <string name="credits">Katkıda Bulunanlar</string>
