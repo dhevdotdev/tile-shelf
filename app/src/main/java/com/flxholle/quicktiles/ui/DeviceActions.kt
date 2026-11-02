@@ -1,11 +1,14 @@
 package com.flxholle.quicktiles.ui
 
 import android.Manifest
+import android.app.StatusBarManager
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
@@ -120,6 +123,21 @@ class DeviceActions(private val context: Context) {
             PublishResult.Published, PublishResult.Unpublished -> ToggleOutcome.Updated
             is PublishResult.NeedsGrant -> ToggleOutcome.NeedsGrant(result.tile)
             is PublishResult.NeedsApp -> ToggleOutcome.NeedsApp(result.tile)
+        }
+    }
+
+    // The system shows its own add-tile prompt. A decline or an error leaves the manual route.
+    fun offerAdd(tile: Tile) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
+        val manager = context.getSystemService(StatusBarManager::class.java) ?: return
+        try {
+            manager.requestAddTileService(
+                ComponentName(context, tile.service.java),
+                context.getString(tileTitleRes(tile)),
+                Icon.createWithResource(context, tileIconRes(tile)),
+                context.mainExecutor,
+            ) { }
+        } catch (_: RuntimeException) {
         }
     }
 

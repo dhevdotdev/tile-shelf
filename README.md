@@ -20,7 +20,7 @@ You need JDK 21 and Android SDK platform 37.
 
 The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. Roborazzi writes `app/screenshots/matrix/`.
 
-Turning a tile on in the app publishes it to the quick settings editor. You still add it to the shade yourself. The app does not place tiles in the active row.
+Turning a tile on in the app publishes it to the quick settings editor. On Android 13 and later the system then asks whether to add the tile to quick settings, and the choice is yours. On older versions, add it from the quick settings editor yourself. The app never places a tile without that confirmation.
 
 ## Tiles
 
@@ -54,7 +54,7 @@ The upstream wireless USB debugging tile needs root. This fork does not include 
 
 ## Limits
 
-Publishing a tile does not add it to the shade. After you turn it on, add it from the quick settings editor.
+Publishing a tile does not add it to the shade by itself. If you decline the add prompt, or you are on Android 12 or older, add it from the quick settings editor. Android may stop showing the prompt for a tile you have declined several times.
 
 Clear clipboard does not clear keyboard clipboard history.
 

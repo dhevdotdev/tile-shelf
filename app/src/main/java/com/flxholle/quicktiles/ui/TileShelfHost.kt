@@ -72,7 +72,10 @@ fun TileShelfHost(
 
     fun applyToggle(tile: Tile, on: Boolean) {
         when (val outcome = device.toggle(tile, on)) {
-            ToggleOutcome.Updated -> revision++
+            ToggleOutcome.Updated -> {
+                revision++
+                if (on) device.offerAdd(tile)
+            }
             ToggleOutcome.Refused -> Unit
             is ToggleOutcome.NeedsGrant -> openGrants(outcome.tile.name)
             is ToggleOutcome.NeedsApp -> {
