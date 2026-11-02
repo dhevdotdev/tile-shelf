@@ -1,6 +1,12 @@
 package com.flxholle.quicktiles
 
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onRoot
 import com.flxholle.quicktiles.catalog.GrantNeed
 import com.flxholle.quicktiles.catalog.KeepScreenMode
 import com.flxholle.quicktiles.catalog.RowSwitch
@@ -21,6 +27,7 @@ import com.flxholle.quicktiles.ui.ShelfModel
 import com.flxholle.quicktiles.ui.ShelfRowModel
 import com.flxholle.quicktiles.ui.theme.AppTheme
 import com.github.takahirom.roborazzi.captureRoboImage
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -62,11 +69,19 @@ class ScreenMatrixTest {
         TileShelfApp(screen = screen, tab = tab, onTab = {}, onUp = {}, actions = ScreenActions())
     }
 
+    // The Compose test rule cancels infinite animations, so each capture settles at once.
+    // captureRoboImage with a content lambda idles the looper and never returns while
+    // LoadingIndicator or the wavy progress bar keep animating.
+    @get:Rule
+    val rule = createAndroidComposeRule<ComponentActivity>()
+
     private fun renderAll(variant: String, dark: Boolean) {
+        var current by mutableStateOf<@Composable () -> Unit>({})
+        rule.setContent { AppTheme(darkTheme = dark) { current() } }
         screens.forEach { (name, content) ->
-            captureRoboImage("screenshots/matrix/$variant/$name.png") {
-                AppTheme(darkTheme = dark) { content() }
-            }
+            current = content
+            rule.waitForIdle()
+            rule.onRoot().captureRoboImage("screenshots/matrix/$variant/$name.png")
         }
     }
 
