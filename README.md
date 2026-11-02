@@ -1,11 +1,6 @@
 # Tile Shelf
 
-More than 50 extra Quick Settings tiles for Android 7 and later: media controls, shortcuts to settings pages, screen and sound toggles, developer switches, and a tile that clears the clipboard.
-
-<p>
-<img src="app/screenshots/matrix/light/shelf.png" alt="The tile shelf in light theme" width="260">
-<img src="app/screenshots/matrix/dark/shelf.png" alt="The tile shelf in dark theme" width="260">
-</p>
+Tile Shelf adds the Quick Settings tiles Android left out, more than 50 of them: media controls, shortcuts to settings pages, screen and sound toggles, developer switches, and a tile that clears the clipboard. It runs on Android 7 and later.
 
 Tile Shelf has no ads, no analytics and no advertising id. It does not use root.
 

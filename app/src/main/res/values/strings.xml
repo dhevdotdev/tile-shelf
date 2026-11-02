@@ -152,7 +152,7 @@
     <string name="grant_accessibility">Accessibility service</string>
     <string name="copy_command">Copy command</string>
     <string name="copied">Copied</string>
-    <string name="about_tagline">More than 50 extra Quick Settings tiles.</string>
+    <string name="about_tagline">The Quick Settings tiles Android left out, more than 50 of them.</string>
     <string name="about_legal">Copyright © 2026 dhevdotdev. Tile Shelf is free software under the GNU GPL, version 3 or later, and comes with no warranty.</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_unreadable">App info could not be read</string>
