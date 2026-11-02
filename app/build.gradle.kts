@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.flxholle.quicktiles"
+    namespace = "com.tileshelf.app"
     compileSdk = 37
     buildToolsVersion = "37.0.0"
 

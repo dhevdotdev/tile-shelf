@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "quicktiles"
+rootProject.name = "tileshelf"
 include(":app")
