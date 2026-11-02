@@ -46,7 +46,9 @@ adb shell pm grant com.tileshelf.app android.permission.DUMP
 
 Some brands block `pm grant` from adb until you flip a switch in Developer options, and fail with a SecurityException otherwise: on OnePlus, Oppo and Realme it is Disable permission monitoring, and on Xiaomi, Redmi and Poco it is USB debugging (Security settings).
 
-The accessibility switch for an app installed outside an app store starts greyed out on Android 13 and later. Open App info for Tile Shelf, tap the menu, choose Allow restricted settings, then turn on Tile Shelf under Accessibility.
+Android 13 and later restrict the accessibility switch for apps installed outside an app store, including installs from adb or a downloaded APK. On stock Android, open App info for Tile Shelf, tap the menu, choose Allow restricted settings, then turn on Tile Shelf under Accessibility. ColorOS 16 (OnePlus, Oppo, Realme) has no such option, and the system turns the service back off, so the screenshot, power menu, split screen and lock screen tiles only work there when Tile Shelf comes from a store.
+
+Some ColorOS 16 builds also no longer have Disable permission monitoring, and then the adb grants above cannot be given without root.
 
 Clear clipboard calls `ClipboardManager.clearPrimaryClip()` from the tile service on API 28 and above. On older APIs, and if that call throws, it sets an empty clip. Keyboard clipboard histories, including Gboard and the OnePlus and Samsung keyboards, keep their own copies, and an app cannot clear those.
 
