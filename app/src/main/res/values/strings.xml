@@ -21,6 +21,8 @@
     <string name="development">Development</string>
     <string name="finish_activities">Always Finish Activities</string>
     <string name="usb_debugging">USB Debugging</string>
+    <string name="wireless_debugging">Wireless debugging</string>
+    <string name="wireless_debugging_needs_wifi">Connect to Wi-Fi to turn on wireless debugging</string>
     <string name="clear_clipboard">Clear clipboard</string>
     <string name="clipboard_cleared">Clipboard cleared</string>
     <string name="clipboard_clear_failed">Could not clear the clipboard</string>

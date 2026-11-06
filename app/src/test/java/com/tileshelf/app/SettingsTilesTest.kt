@@ -1,6 +1,9 @@
 package com.tileshelf.app
 
 import android.app.Application
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.net.NetworkInfo
 import android.provider.Settings
 import com.tileshelf.app.abstract_tiles.SelectionTileService
 import com.tileshelf.app.tiles.AnimatorDurationTileService
@@ -12,7 +15,9 @@ import com.tileshelf.app.tiles.KeepScreenOnTileService
 import com.tileshelf.app.tiles.RotationSwitchTileService
 import com.tileshelf.app.tiles.ToggleAnimationTileService
 import com.tileshelf.app.tiles.UsbDebuggingTileService
+import com.tileshelf.app.tiles.WirelessDebuggingTileService
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,6 +26,10 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
+import org.robolectric.shadows.ShadowNetwork
+import org.robolectric.shadows.ShadowNetworkCapabilities
+import org.robolectric.shadows.ShadowNetworkInfo
+import org.robolectric.shadows.ShadowToast
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35])
@@ -57,6 +66,52 @@ class SettingsTilesTest {
         roundTrips(service)
         service.saveValue(1)
         assertEquals(1, global(Settings.Global.ADB_ENABLED))
+    }
+
+    private fun connectivity() = shadowOf(
+        RuntimeEnvironment.getApplication().getSystemService(ConnectivityManager::class.java),
+    )
+
+    private fun joinNetwork(transport: Int, id: Int) {
+        val network = ShadowNetwork.newInstance(id)
+        val info = ShadowNetworkInfo.newInstance(
+            NetworkInfo.DetailedState.CONNECTED,
+            if (transport == NetworkCapabilities.TRANSPORT_WIFI) ConnectivityManager.TYPE_WIFI else ConnectivityManager.TYPE_MOBILE,
+            0,
+            true,
+            NetworkInfo.State.CONNECTED,
+        )
+        val capabilities = ShadowNetworkCapabilities.newInstance()
+        shadowOf(capabilities).addTransportType(transport)
+        connectivity().addNetwork(network, info)
+        connectivity().setNetworkCapabilities(network, capabilities)
+    }
+
+    @Test
+    fun wireless_debugging_refuses_without_wifi_and_says_why() {
+        connectivity().clearAllNetworks()
+        joinNetwork(NetworkCapabilities.TRANSPORT_CELLULAR, 101)
+        val service = tile(WirelessDebuggingTileService::class.java)
+        assertFalse(service.saveValue(1))
+        assertEquals(0, Settings.Global.getInt(resolver, WirelessDebuggingTileService.SETTING, 0))
+        assertEquals(
+            RuntimeEnvironment.getApplication().getString(R.string.wireless_debugging_needs_wifi),
+            ShadowToast.getTextOfLatestToast(),
+        )
+    }
+
+    @Test
+    fun wireless_debugging_writes_adb_wifi_enabled_on_wifi() {
+        connectivity().clearAllNetworks()
+        joinNetwork(NetworkCapabilities.TRANSPORT_CELLULAR, 101)
+        joinNetwork(NetworkCapabilities.TRANSPORT_WIFI, 102)
+        val service = tile(WirelessDebuggingTileService::class.java)
+        roundTrips(service)
+        service.saveValue(1)
+        assertEquals(1, global("adb_wifi_enabled"))
+        assertTrue(service.saveValue(0))
+        assertEquals(0, global("adb_wifi_enabled"))
+        assertEquals(null, ShadowToast.getTextOfLatestToast())
     }
 
     @Test

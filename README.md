@@ -32,6 +32,7 @@ Most tiles need nothing beyond the app. Some change system settings and need a o
 | Keep screen on | Modify system settings and an adb grant of `WRITE_SECURE_SETTINGS`. The detail screen chooses AC, USB, wireless, or any power source. |
 | Switch volume modes, Switch between loud and silence | One-time Do Not Disturb access |
 | USB debugging, Heads-up, Animator duration, Disable all animations, Always finish activities | adb grant of `android.permission.WRITE_SECURE_SETTINGS` |
+| Wireless debugging | adb grant of `WRITE_SECURE_SETTINGS`. Android 11 and later, on Wi-Fi only. Without Wi-Fi the tile says so and stays off. |
 | Demo mode | adb grants of `WRITE_SECURE_SETTINGS` and `DUMP` |
 | Screenshot, Lock screen, Split screen, Power menu | Enable the Tile Shelf accessibility service. Screenshot and lock screen appear from API 28. |
 | Grayscale | adb `WRITE_SECURE_SETTINGS`. The row is hidden from API 30 up unless it was already on, in which case you can only turn it off. |

@@ -59,6 +59,7 @@ import com.tileshelf.app.tiles.SilenceLoudSwitchTileService
 import com.tileshelf.app.tiles.ToggleAnimationTileService
 import com.tileshelf.app.tiles.UsbDebuggingTileService
 import com.tileshelf.app.tiles.VibrateCallsTileService
+import com.tileshelf.app.tiles.WirelessDebuggingTileService
 import kotlin.reflect.KClass
 
 enum class ShelfSection {
@@ -136,6 +137,7 @@ enum class Tile(
     Counter("counter", CounterTileService::class, ShelfSection.Miscellaneous, detail = Detail.Counter, activeTile = true),
 
     UsbDebugging("usb_debugging", UsbDebuggingTileService::class, ShelfSection.Development, Gate.WriteSecure, activeTile = false),
+    WirelessDebugging("wireless_debugging", WirelessDebuggingTileService::class, ShelfSection.Development, Gate.WriteSecure, Offer.Since(30), activeTile = false),
     DemoMode("demo_mode", DemoModeTileService::class, ShelfSection.Development, Gate.SecureAndDump, activeTile = false),
     DeveloperOptions("developer_options", OpenDeveloperOptionsTileService::class, ShelfSection.Development, activeTile = true),
     ShowTaps("show_taps", ShowTapsTileService::class, ShelfSection.Development, Gate.WriteSecure, Offer.Never, activeTile = false),
@@ -151,7 +153,7 @@ enum class Tile(
             entries.associateBy { it.key }
 
         init {
-            require(entries.size == 58)
+            require(entries.size == 59)
             require(byService.size == entries.size)
             require(byKey.size == entries.size)
             val slots = entries.mapNotNull { (it.detail as? Detail.CustomApp)?.slot }

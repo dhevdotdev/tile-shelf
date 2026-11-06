@@ -18,10 +18,13 @@ Changes from QuickTiles 1.8, made by dhevdotdev starting
   package com.tileshelf.app, and replaced the launcher icon.
 - Rewrote the screens in Jetpack Compose with Material 3 Expressive,
   including the tile catalog, the grants flow and the about screen.
-- Added the Clear clipboard tile and the system add-tile prompt.
-- Removed the root-only wireless debugging tile, the old settings
-  screens, the translations, the store listings and the GitLab CI
-  configuration.
+- Added the Clear clipboard, Mute media, Auto-sync, Switch keyboard
+  and Wireless debugging tiles, web links for the custom tiles, and
+  the system add-tile prompt.
+- Replaced the root-only wireless debugging tile with one that uses
+  the WRITE_SECURE_SETTINGS grant on Android 11 and later.
+- Removed the old settings screens, the translations, the store
+  listings and the GitLab CI configuration.
 
 Files that carry their own copyright and license header keep it. They
 come from these projects, which QuickTiles used:
