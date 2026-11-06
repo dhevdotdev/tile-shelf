@@ -71,7 +71,7 @@ You need JDK 21 and Android SDK platform 37.
 ./gradlew :app:recordRoborazziDebug
 ```
 
-The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. Roborazzi writes the screenshot matrix to `app/screenshots/matrix/`.
+The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. `./gradlew :app:assembleRelease` signs the release APK when the Gradle properties `tileshelf.signing.storeFile` and `tileshelf.signing.keyAlias` and the environment variable `TILESHELF_SIGNING_PASSWORD` are set, and leaves it unsigned otherwise. Roborazzi writes the screenshot matrix to `app/screenshots/matrix/`.
 
 `compileSdk` is 37 because Material 3 Expressive (`androidx.compose.material3:material3:1.5.0-beta02`) and the Compose 1.12 libraries it pulls in require it. `targetSdk` is 36 and `minSdk` is 24.
 

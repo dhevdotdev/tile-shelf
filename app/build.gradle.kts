@@ -5,6 +5,10 @@ plugins {
     alias(libs.plugins.roborazzi)
 }
 
+val releaseStoreFile = providers.gradleProperty("tileshelf.signing.storeFile").orNull
+val releaseKeyAlias = providers.gradleProperty("tileshelf.signing.keyAlias").orNull
+val releasePassword = providers.environmentVariable("TILESHELF_SIGNING_PASSWORD").orNull
+
 android {
     namespace = "com.tileshelf.app"
     compileSdk = 37
@@ -20,8 +24,20 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        if (releaseStoreFile != null && releaseKeyAlias != null && releasePassword != null) {
+            create("release") {
+                storeFile = file(releaseStoreFile)
+                storePassword = releasePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releasePassword
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.findByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
