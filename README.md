@@ -2,7 +2,7 @@
 
 Tile Shelf adds the Quick Settings tiles Android left out, more than 50 of them: media controls, shortcuts to settings pages, screen and sound toggles, developer switches, and a tile that clears the clipboard. It runs on Android 7 and later.
 
-Tile Shelf has no ads, no analytics and no advertising id. It does not use root.
+Tile Shelf has no ads, no analytics and no advertising id, and it does not ask for internet access, so it cannot send anything anywhere. It does not use root.
 
 <p>
 <img src="docs/screenshots/shelf.png" alt="The shelf: search, your tiles, then every tile by section" width="250">
@@ -11,6 +11,16 @@ Tile Shelf has no ads, no analytics and no advertising id. It does not use root.
 </p>
 
 Left, the shelf with the tiles you turned on at the top. Middle, Android offering to add a tile to Quick Settings. Right, the Grants tab, which shows the permissions some tiles need.
+
+## Install
+
+Download the APK from the [latest release](../../releases/latest) and open it on your phone. Android asks you to allow installs from your browser or file manager the first time.
+
+Every release is signed with the same key. Its certificate SHA-256 fingerprint is:
+
+```
+66:6D:E3:13:CF:E3:E5:BD:A3:3C:DD:20:F4:13:E3:38:48:B6:14:AD:83:08:A1:7B:C2:CF:EE:2D:6D:EB:C0:9C
+```
 
 ## Adding a tile
 
