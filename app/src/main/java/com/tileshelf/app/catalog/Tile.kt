@@ -6,6 +6,7 @@ import com.tileshelf.app.accessibility_tiles.PowerDialogTileService
 import com.tileshelf.app.accessibility_tiles.ScreenshotTileService
 import com.tileshelf.app.accessibility_tiles.ToggleSplitScreenTileService
 import com.tileshelf.app.intent_tiles.BatteryTileService
+import com.tileshelf.app.intent_tiles.CleanLinkTileService
 import com.tileshelf.app.intent_tiles.KeyboardPickerTileService
 import com.tileshelf.app.intent_tiles.MakeCallTileService
 import com.tileshelf.app.intent_tiles.NewAlarmTileService
@@ -116,6 +117,7 @@ enum class Tile(
     AboutPhone("about_phone", OpenAboutPhoneTileService::class, ShelfSection.Settings, activeTile = true),
 
     ClearClipboard("clear_clipboard", ClearClipboardTileService::class, ShelfSection.Utilities, activeTile = true),
+    CleanLink("clean_link", CleanLinkTileService::class, ShelfSection.Utilities, activeTile = true),
     ScreenTimeout("screen_timeout", ScreenTimeoutTileService::class, ShelfSection.Utilities, Gate.ModifySystem, activeTile = false),
     KeepScreenOn("keep_screen_on", KeepScreenOnTileService::class, ShelfSection.Utilities, Gate.SecureAndModifySystem, detail = Detail.KeepScreen, activeTile = false),
     SwitchStates("switch_states", DoNotDisturbSwitchTileService::class, ShelfSection.Utilities, Gate.NotificationPolicy, activeTile = false),
@@ -153,7 +155,7 @@ enum class Tile(
             entries.associateBy { it.key }
 
         init {
-            require(entries.size == 59)
+            require(entries.size == 60)
             require(byService.size == entries.size)
             require(byKey.size == entries.size)
             val slots = entries.mapNotNull { (it.detail as? Detail.CustomApp)?.slot }

@@ -1,0 +1,509 @@
+[
+ {
+  "name": "LinkedIn",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?linkedin\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9.-]*\\.)?linkedin\\.com\\/(?:redir\\/redirect|safety\\/go)\\/?\\?(?:url=|[^#]*?&url=)(https?(?::|%3[Aa])(?:\\/|%2[Ff]){2}[^&#]+)"
+  ]
+ },
+ {
+  "name": "adform.net",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?adform\\.net",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/track\\.adform\\.net\\/C\\/.*?ckurl=([^&]+)"
+  ]
+ },
+ {
+  "name": "admitad.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?admitad\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?admitad\\.com.*ulp=([^&]*)"
+  ]
+ },
+ {
+  "name": "alabout.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?alabout\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?alabout\\.com.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "amazon-adsystem",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}",
+  "exceptions": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}\\/v3\\/oor\\?"
+  ],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?amazon-adsystem(?:\\.[a-z]{2,}){1,}\\/x\\/c\\/.+?\\/([^&]+)"
+  ]
+ },
+ {
+  "name": "anonym.to",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?anonym\\.to",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?anonym\\.to.*\\?([^&]*)"
+  ]
+ },
+ {
+  "name": "app.adjust.com",
+  "urlPattern": "^https?:\\/\\/app\\.adjust\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/app\\.adjust\\.com.*redirect=([^&]*)"
+  ]
+ },
+ {
+  "name": "artefact.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?artefact\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/.*?artefact\\.com\\/trck\\/.*?deeplinkurl=([^&]+)"
+  ]
+ },
+ {
+  "name": "awin1.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?awin1\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/.*?awin1\\.com\\/.*?ued=([^&]+)"
+  ]
+ },
+ {
+  "name": "awstrack.me",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?awstrack\\.me",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?awstrack\\.me\\/.*\\/(https?.*?)\\/"
+  ]
+ },
+ {
+  "name": "cc.loginfra.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?loginfra\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/cc\\.loginfra\\.com\\/.*?u=([^&]+)"
+  ]
+ },
+ {
+  "name": "ccbill.com",
+  "urlPattern": "^https?:\\/\\/refer\\.ccbill\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/refer\\.ccbill\\.com.*HTML=([^&]*)"
+  ]
+ },
+ {
+  "name": "curseforge.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?curseforge\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?curseforge\\.com\\/linkout\\?remoteUrl=([^&]*)"
+  ]
+ },
+ {
+  "name": "deviantart.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?deviantart\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?deviantart\\.com\\/.*?\\/outgoing\\?(.*)"
+  ]
+ },
+ {
+  "name": "digidip.net",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?digidip\\.net",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?digidip\\.net.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "disq.us",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?disq\\.us",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?disq\\.us\\/.*?url=([^&]*)%3A"
+  ]
+ },
+ {
+  "name": "doubleclick",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?doubleclick(?:\\.[a-z]{2,}){1,}",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?doubleclick(?:\\.[a-z]{2,}){1,}\\/.*?tag_for_child_directed_treatment=;%3F([^&]*)"
+  ]
+ },
+ {
+  "name": "dpbolvw.net",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?dpbolvw\\.net",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?dpbolvw\\.net.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "duckduckgo",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?duckduckgo\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/duckduckgo\\.com\\/l\\/.*?uddg=([^&]+)"
+  ]
+ },
+ {
+  "name": "ebay",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?ebay(?:\\.[a-z]{2,}){1,}",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?rover\\.ebay(?:\\.[a-z]{2,}){1,}\\/rover.*mpre=([^&]*)"
+  ]
+ },
+ {
+  "name": "effiliation.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?effiliation\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?effiliation\\.com.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "exactag.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?exactag\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?exactag\\.com.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "facebook",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com",
+  "exceptions": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/.*?(plugins|ajax)\\/",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/dialog\\/(?:share|send)",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/groups\\/member_bio\\/bio_dialog\\/",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/photo\\.php\\?",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/privacy\\/specific_audience_selector_dialog\\/",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?facebook\\.com\\/photo\\/download\\/"
+  ],
+  "redirections": [
+   "^https?:\\/\\/l[a-z]?\\.facebook\\.com/l\\.php\\?.*?u=(https?%3A%2F%2F[^&]*)"
+  ]
+ },
+ {
+  "name": "flexlinkspro.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?flexlinkspro\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?flexlinkspro\\.com.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "gate.sc",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?gate\\.sc",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?gate\\.sc\\/.*?url=([^&]*)"
+  ]
+ },
+ {
+  "name": "getpocket.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?getpocket\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?getpocket\\.com.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "google",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}",
+  "exceptions": [
+   "^https?:\\/\\/mail\\.google\\.com\\/mail\\/u\\/",
+   "^https?:\\/\\/accounts\\.google\\.com\\/o\\/oauth2\\/",
+   "^https?:\\/\\/accounts\\.google\\.com\\/signin\\/oauth\\/",
+   "^https?:\\/\\/(?:docs|accounts)\\.google(?:\\.[a-z]{2,}){1,}",
+   "^https?:\\/\\/([a-z0-9-\\.])*(chat|drive)\\.google\\.com\\/videoplayback",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}(?:\\/upload)?\\/drive\\/",
+   "^https?:\\/\\/news\\.google\\.com.*\\?hl=.",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/s\\?tbm=map.*?gs_[a-z]*=.",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/(?:complete\\/search|setprefs|searchbyimage)",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/(?:appsactivity|aclk\\?)",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/safe[-]?browsing\\/([^&]+)",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/async\\/.*"
+  ],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/url\\?.*?(?:url|q)=(https?[^&]+)",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/.*?adurl=([^&]+)",
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?google(?:\\.[a-z]{2,}){1,}\\/amp\\/s\\/([^&]+)"
+  ]
+ },
+ {
+  "name": "googleadservices",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?googleadservices\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?googleadservices\\.com\\/.*?adurl=([^&]*)"
+  ]
+ },
+ {
+  "name": "govdelivery.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?govdelivery\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?links\\.govdelivery\\.com.*\\/track\\?.*(https?:\\/\\/.*)"
+  ]
+ },
+ {
+  "name": "hlserve.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?hlserve\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?hlserve\\.com.*dest=([^&]*)"
+  ]
+ },
+ {
+  "name": "href.li",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?href\\.li",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/href\\.li\\/\\?(http.+)"
+  ]
+ },
+ {
+  "name": "idealo-partner.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?idealo-partner\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?idealo-partner\\.com.*trg=([^&]*)"
+  ]
+ },
+ {
+  "name": "imgsrc.ru",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?imgsrc\\.ru",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?dlp\\.imgsrc\\.ru\\/go\\/\\d+\\/\\d+\\/\\d+\\/([^&]*)"
+  ]
+ },
+ {
+  "name": "instagram",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?instagram\\.com",
+  "exceptions": [],
+  "redirections": [
+   ".*u=([^&]*)"
+  ]
+ },
+ {
+  "name": "linksynergy.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?linksynergy\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?linksynergy\\.com\\/.*?murl=([^&]*)"
+  ]
+ },
+ {
+  "name": "mailpanion.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mailpanion\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mailpanion\\.com.*destination=([^&]*)"
+  ]
+ },
+ {
+  "name": "mailtrack.io",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mailtrack\\.io",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mailtrack\\.io.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "messenger.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?messenger\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/l\\.messenger\\.com\\/l\\.php\\?u=([^&]*)"
+  ]
+ },
+ {
+  "name": "mozaws.net",
+  "urlPattern": "https?:\\/\\/outgoing\\.prod\\.mozaws\\.net\\/",
+  "exceptions": [],
+  "redirections": [
+   "https?:\\/\\/[^/]+\\/v1\\/[0-9a-f]{64}\\/(.*)"
+  ]
+ },
+ {
+  "name": "mozgcp.net",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?mozgcp\\.net",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/prod\\.outgoing\\.prod\\.webservices\\.mozgcp\\.net\\/v1\\/.+?\\/([^&]+)"
+  ]
+ },
+ {
+  "name": "mysku.ru",
+  "urlPattern": "^https?:\\/\\/mysku\\.ru",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/mysku\\.ru.*r=([^&]*)"
+  ]
+ },
+ {
+  "name": "partner-ads.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?partner-ads\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/.*?partner-ads\\.com\\/.*?htmlurl=([^&]+)"
+  ]
+ },
+ {
+  "name": "reddit",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?reddit.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/out\\.reddit\\.com\\/.*?url=([^&]*)",
+   "^https?:\\/\\/click\\.redditmail\\.com\\/.*?url=([^&]*)"
+  ]
+ },
+ {
+  "name": "rutracker.org",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?rutracker\\.org",
+  "exceptions": [],
+  "redirections": [
+   ".*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "signtr.website",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?signtr\\.website",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?signtr\\.website.*redirect=([^&]*)"
+  ]
+ },
+ {
+  "name": "site.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site\\.com.*?\\?to=([^&]*)"
+  ]
+ },
+ {
+  "name": "site2.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site2\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site2\\.com.*?\\?.*=(.*)"
+  ]
+ },
+ {
+  "name": "site3.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site3\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?site3\\.com.*?\\?r=([^&]*)"
+  ]
+ },
+ {
+  "name": "skimresources.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?skimresources\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/go\\.skimresources\\.com\\/.*?url=([^&]+)"
+  ]
+ },
+ {
+  "name": "smartredirect.de",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?smartredirect\\.de",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?smartredirect\\.de.*?url=([^&]*)"
+  ]
+ },
+ {
+  "name": "srvtrck.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?srvtrck\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?srvtrck\\.com.*url=([^&]*)"
+  ]
+ },
+ {
+  "name": "steamcommunity",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?steamcommunity\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?steamcommunity\\.com\\/linkfilter\\/\\?url=([^&]*)"
+  ]
+ },
+ {
+  "name": "t.umblr.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?umblr\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/t\\.umblr\\.com\\/redirect\\?z=([^&]+)"
+  ]
+ },
+ {
+  "name": "telekom.de",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?telekom\\.de",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/aaa\\.telekom\\.de\\/trck\\/.*?deeplinkurl=([^&]+)"
+  ]
+ },
+ {
+  "name": "tokopedia.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tokopedia\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tokopedia\\.com\\/promo.*r=([^&]*)"
+  ]
+ },
+ {
+  "name": "tradedoubler.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tradedoubler\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?tradedoubler\\.com.*(?:url|_td_deeplink)=([^&]*)"
+  ]
+ },
+ {
+  "name": "viglink.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?viglink\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/redirect\\.viglink\\.com\\/.*?u=([^&]+)"
+  ]
+ },
+ {
+  "name": "vk.com",
+  "urlPattern": "^https?:\\/\\/vk\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/vk\\.com\\/away\\.php\\?to=([^&]*)"
+  ]
+ },
+ {
+  "name": "webgains.com",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?webgains\\.com",
+  "exceptions": [],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?webgains\\.com.*wgtarget=([^&]*)"
+  ]
+ },
+ {
+  "name": "youtube",
+  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?(youtube\\.com|youtu\\.be)",
+  "exceptions": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\/signin\\?.*?"
+  ],
+  "redirections": [
+   "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?youtube\\.com\\/redirect?.*?q=([^&]*)"
+  ]
+ }
+]

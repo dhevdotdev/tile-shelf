@@ -26,6 +26,12 @@
     <string name="clear_clipboard">Clear clipboard</string>
     <string name="clipboard_cleared">Clipboard cleared</string>
     <string name="clipboard_clear_failed">Could not clear the clipboard</string>
+    <string name="clean_link">Clean link</string>
+    <string name="link_cleaned">Link cleaned</string>
+    <string name="link_already_clean">No trackers in this link</string>
+    <string name="clipboard_has_no_link">No link on the clipboard</string>
+    <string name="clipboard_has_nothing">Nothing on the clipboard</string>
+    <string name="clipboard_unreadable">Could not read the clipboard</string>
     <string name="keep_screen_on">Keep Screen On</string>
     <string name="demo_mode">Demo Mode</string>
     <string name="heads_up">Heads-up</string>
@@ -184,7 +190,11 @@
     <string name="credit_power_button">Power Button Tile by rascarlo</string>
     <string name="credit_greyscale">Greyscale by fei-ke</string>
     <string name="credit_icon_smashicons">Split screen icon by Smashicons</string>
+    <string name="credit_firefox_link_rules">Clean link rules from Firefox by Mozilla</string>
+    <string name="credit_clearurls">Redirect rules from ClearURLs by Kevin Röbert</string>
     <string name="credit_apache">Apache-2.0</string>
+    <string name="credit_mpl_lgplv3">MPL-2.0 and LGPLv3</string>
+    <string name="credit_lgplv3">LGPLv3</string>
     <string name="credit_gplv3">GPLv3</string>
     <string name="credit_flaticon">Flaticon</string>
     <plurals name="steps_missing">

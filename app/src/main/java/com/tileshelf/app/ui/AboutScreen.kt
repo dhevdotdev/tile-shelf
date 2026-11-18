@@ -45,6 +45,8 @@ private fun AboutReady(model: AboutModel.Ready, padding: PaddingValues) {
         stringResource(R.string.credit_adaptive_brightness) to stringResource(R.string.credit_gplv3),
         stringResource(R.string.credit_power_button) to stringResource(R.string.credit_gplv3),
         stringResource(R.string.credit_greyscale) to stringResource(R.string.credit_apache),
+        stringResource(R.string.credit_firefox_link_rules) to stringResource(R.string.credit_mpl_lgplv3),
+        stringResource(R.string.credit_clearurls) to stringResource(R.string.credit_lgplv3),
         stringResource(R.string.credit_icon_smashicons) to stringResource(R.string.credit_flaticon),
     )
     LazyColumn(

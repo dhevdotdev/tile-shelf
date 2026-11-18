@@ -1,0 +1,60 @@
+name: Link rules
+
+on:
+  schedule:
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: link-rules
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Fetch the latest upstream rules
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 tools/update_link_rules.py
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- app/src/main/assets/link-rules; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --stat -- app/src/main/assets/link-rules
+          fi
+      - uses: actions/setup-java@v6
+        if: steps.diff.outputs.changed == 'true'
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v6
+        if: steps.diff.outputs.changed == 'true'
+      - name: Test with the new rules
+        if: steps.diff.outputs.changed == 'true'
+        run: ./gradlew :app:testDebugUnitTest
+      - name: Open or update the pull request
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C link-rules-update
+          git add app/src/main/assets/link-rules
+          git commit -m "Update the Clean link rules from upstream"
+          git push --force origin link-rules-update
+          if [ -z "$(gh pr list --head link-rules-update --state open --json number --jq '.[].number')" ]; then
+            gh pr create --base main --head link-rules-update \
+              --title "Update the Clean link rules from upstream" \
+              --body "Firefox's strip-on-share lists or the ClearURLs redirect rules changed upstream. The unit tests passed with the new rules. sources.json in the diff shows the new upstream commits."
+          fi

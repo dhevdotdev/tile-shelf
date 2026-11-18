@@ -18,9 +18,9 @@ Changes from QuickTiles 1.8, made by dhevdotdev starting
   package com.tileshelf.app, and replaced the launcher icon.
 - Rewrote the screens in Jetpack Compose with Material 3 Expressive,
   including the tile catalog, the grants flow and the about screen.
-- Added the Clear clipboard, Mute media, Auto-sync, Switch keyboard
-  and Wireless debugging tiles, web links for the custom tiles, and
-  the system add-tile prompt.
+- Added the Clear clipboard, Clean link, Mute media, Auto-sync, Switch
+  keyboard and Wireless debugging tiles, web links for the custom
+  tiles, and the system add-tile prompt.
 - Replaced the root-only wireless debugging tile with one that uses
   the WRITE_SECURE_SETTINGS grant on Android 11 and later.
 - Removed the old settings screens, the translations, the store
@@ -34,6 +34,17 @@ come from these projects, which QuickTiles used:
 - Adaptive Brightness Tile by rascarlo, GPL-3.0
 - PowerButtonTile by rascarlo, GPL-3.0
 - Greyscale by fei-ke, Apache License 2.0
+
+The Clean link tile bundles rule data in app/src/main/assets/link-rules/,
+each file next to its license, with sources.json naming the commit it
+came from:
+
+- Firefox strip-on-share lists by Mozilla: StripOnShare.json under the
+  Mozilla Public License 2.0, StripOnShareLGPL.json under the GNU LGPL
+  version 3.
+- ClearURLs Rules by Kevin Röbert and contributors, GNU LGPL version 3.
+  Only the redirections of each provider are taken, with its URL
+  pattern and exceptions.
 
 The split-screen tile icon is by Smashicons from Flaticon. Google Sans
 Flex is under the SIL Open Font License, see

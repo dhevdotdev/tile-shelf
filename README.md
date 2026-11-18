@@ -36,7 +36,7 @@ Most tiles need nothing beyond the app. Some change system settings and need a o
 | New alarm, New timer, New event, Make call, Take photo, Record video, Calculator, File manager | None |
 | Custom app, five slots | None. Pick an app, or enter a web address or app link, in Tile Shelf before the tile can open it. |
 | Switch keyboard, Search settings, Languages, Personal dictionary, Privacy, Display, Home app, Notification history, VPN, Data usage, Screen cast, Connected devices, About phone, Developer options, Battery | None |
-| Clear clipboard, Auto-sync | None |
+| Clear clipboard, Clean link, Auto-sync | None |
 | Counter | None. Reset the count from the tile's detail screen. |
 | Screen timeout, Adjust brightness, Adaptive brightness, Vibrate on calls, Force rotation, Fix rotation | One-time Modify system settings |
 | Keep screen on | Modify system settings and an adb grant of `WRITE_SECURE_SETTINGS`. The detail screen chooses AC, USB, wireless, or any power source. |
@@ -60,6 +60,8 @@ Some brands block `pm grant` from adb until you flip a switch in Developer optio
 Android 13 and later restrict the accessibility switch for apps installed outside an app store, including installs from adb or a downloaded APK. On stock Android, open App info for Tile Shelf, tap the menu, choose Allow restricted settings, then turn on Tile Shelf under Accessibility. ColorOS 16 (OnePlus, Oppo, Realme) has no such option, and the system turns the service back off, so the screenshot, power menu, split screen and lock screen tiles only work there when Tile Shelf comes from a store.
 
 Some ColorOS 16 builds also no longer have Disable permission monitoring, and then the adb grants above cannot be given without root.
+
+Clean link removes tracking parameters, such as `utm_source`, `fbclid` and YouTube's `si`, from the links on the clipboard, and unwraps Google, Facebook and other redirect links to the real address. Everything else in the copied text stays as it was. Its rules are [Firefox's Copy Clean Link lists](https://github.com/mozilla-firefox/firefox/tree/main/toolkit/components/antitracking/StripOnShareLists) and the redirect rules from [ClearURLs](https://github.com/ClearURLs/Rules), bundled in the app, so it works without internet access. Short links such as `amzn.to` stay as they are, because expanding them needs the internet. A weekly GitHub workflow checks both projects for new rules and opens a pull request, so each release ships the latest ones. Android only lets the app on screen read the clipboard, so the tile opens an invisible screen for a moment, and Android 12 and later show a notice that Tile Shelf read the clipboard.
 
 Clear clipboard calls `ClipboardManager.clearPrimaryClip()` from the tile service on API 28 and above. On older APIs, and if that call throws, it sets an empty clip. Keyboard clipboard histories, including Gboard and the OnePlus and Samsung keyboards, keep their own copies, and an app cannot clear those.
 
@@ -88,6 +90,8 @@ The debug APK is `app/build/outputs/apk/debug/app-debug.apk`. `./gradlew :app:as
 ## Credits and license
 
 Tile Shelf is based on [QuickTiles](https://gitlab.com/flxholle/quick-tiles) 1.8, written by asdoi and maintained by flxholle (Felix Hollederer), with help from its contributors. Most of the tile services come from QuickTiles, and its full history is kept in this repository. Tile Shelf is not the official QuickTiles app and is not affiliated with its authors.
+
+Clean link uses Firefox's strip-on-share lists by Mozilla (MPL-2.0 and LGPL-3.0) and the redirect rules from ClearURLs Rules by Kevin Röbert (LGPL-3.0). They are kept unmodified, apart from taking only the redirect rules from ClearURLs, in `app/src/main/assets/link-rules/` with their licenses and the commit each came from.
 
 QuickTiles in turn used code from Dev-Tiles by Mustafa Ali (Apache-2.0), Dev-QuickSettings by Adrián García (Apache-2.0), Adaptive Brightness Tile and PowerButtonTile by rascarlo (GPL-3.0), and Greyscale by fei-ke (Apache-2.0). Files from those projects keep their own license headers. The split-screen icon is by Smashicons from Flaticon.
 

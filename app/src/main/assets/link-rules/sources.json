@@ -1,0 +1,18 @@
+[
+ {
+  "file": "firefox-strip-on-share.json",
+  "license": "MPL-2.0",
+  "source": "https://github.com/mozilla-firefox/firefox/blob/ba5ea450d784ff949c86d9ea91b647605c607c05/toolkit/components/antitracking/StripOnShareLists/MPL2/StripOnShare.json"
+ },
+ {
+  "file": "firefox-strip-on-share-lgpl.json",
+  "license": "LGPL-3.0",
+  "source": "https://github.com/mozilla-firefox/firefox/blob/3ee2103f63d355a42e58899a27b6b0483716c9d9/toolkit/components/antitracking/StripOnShareLists/LGPL/StripOnShareLGPL.json"
+ },
+ {
+  "file": "clearurls-redirects.json",
+  "license": "LGPL-3.0",
+  "source": "https://github.com/ClearURLs/Rules/blob/c080ff46cb381b092c09d46977e4f2e76b38ae5f/data.min.json",
+  "note": "The redirections of each ClearURLs provider, with its urlPattern and exceptions."
+ }
+]
