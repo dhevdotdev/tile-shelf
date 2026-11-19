@@ -32,6 +32,17 @@
     <string name="clipboard_has_no_link">No link on the clipboard</string>
     <string name="clipboard_has_nothing">Nothing on the clipboard</string>
     <string name="clipboard_unreadable">Could not read the clipboard</string>
+    <string name="clean_link_copy_hint">Copy a link, then tap Clean link.</string>
+    <string name="clean_link_try_again">Android did not let Tile Shelf read it. Try again.</string>
+    <string name="redirect_removed">Redirect removed</string>
+    <plurals name="trackers_removed">
+        <item quantity="one">%d tracker removed</item>
+        <item quantity="other">%d trackers removed</item>
+    </plurals>
+    <plurals name="redirect_and_trackers_removed">
+        <item quantity="one">Redirect and %d tracker removed</item>
+        <item quantity="other">Redirect and %d trackers removed</item>
+    </plurals>
     <string name="keep_screen_on">Keep Screen On</string>
     <string name="demo_mode">Demo Mode</string>
     <string name="heads_up">Heads-up</string>

@@ -1,7 +1,12 @@
 package com.tileshelf.app
 
 import androidx.activity.ComponentActivity
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -12,6 +17,7 @@ import com.tileshelf.app.catalog.KeepScreenMode
 import com.tileshelf.app.catalog.RowSwitch
 import com.tileshelf.app.catalog.Tile
 import com.tileshelf.app.ui.AboutModel
+import com.tileshelf.app.ui.CleanLinkCard
 import com.tileshelf.app.ui.DetailModel
 import com.tileshelf.app.ui.TileShelfApp
 import com.tileshelf.app.ui.GrantStatusModel
@@ -71,7 +77,23 @@ class ScreenMatrixTest {
         "about" to { page(Screen.About(AboutModel.Ready("1.8")), RootTab.About) },
         "about_loading" to { page(Screen.About(AboutModel.Loading), RootTab.About) },
         "about_failed" to { page(Screen.About(AboutModel.Failed), RootTab.About) },
+        "clean_link_cleaned" to {
+            cleanLink(ClipCleanOutcome.Cleaned("https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=42", 2, 0))
+        },
+        "clean_link_redirect" to {
+            cleanLink(ClipCleanOutcome.Cleaned("https://example.com/articles/2026/a-very-long-article-title-that-wraps-onto-a-second-line?id=7", 3, 1))
+        },
+        "clean_link_already" to { cleanLink(ClipCleanOutcome.AlreadyClean("https://example.com/page?id=1")) },
+        "clean_link_no_link" to { cleanLink(ClipCleanOutcome.NoLink) },
+        "clean_link_unreadable" to { cleanLink(ClipCleanOutcome.Unreadable) },
     )
+
+    @Composable
+    private fun cleanLink(outcome: ClipCleanOutcome) {
+        Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surfaceDim)) {
+            CleanLinkCard(outcome = outcome, showing = true, onHide = {}, onDismiss = {})
+        }
+    }
 
     @Composable
     private fun page(screen: Screen, tab: RootTab) {

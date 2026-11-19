@@ -6,4 +6,10 @@
     </style>
 
     <style name="AppTheme" parent="Base.AppTheme" />
+
+    <style name="InvisibleTheme" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 </resources>
