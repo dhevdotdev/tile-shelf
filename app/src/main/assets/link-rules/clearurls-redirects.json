@@ -361,7 +361,7 @@
  },
  {
   "name": "reddit",
-  "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?reddit.com",
+  "urlPattern": "^https?:\\/\\/(?:(?:[a-z0-9-]+\\.)*?reddit.com|click\\.redditmail\\.com\\/.*?url=)",
   "exceptions": [],
   "redirections": [
    "^https?:\\/\\/out\\.reddit\\.com\\/.*?url=([^&]*)",
