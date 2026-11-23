@@ -12,7 +12,7 @@
  {
   "file": "clearurls-redirects.json",
   "license": "LGPL-3.0",
-  "source": "https://github.com/ClearURLs/Rules/blob/c080ff46cb381b092c09d46977e4f2e76b38ae5f/data.min.json",
+  "source": "https://github.com/ClearURLs/Rules/blob/326be261ddeb619eaa6413d32920ed9e98924609/data.min.json",
   "note": "The redirections of each ClearURLs provider, with its urlPattern and exceptions."
  }
 ]
